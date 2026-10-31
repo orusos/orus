@@ -60,21 +60,23 @@ def run(out):
     compositor = command('pgrep', '-u', str(os.getuid()), '-x', 'labwc').splitlines()
     app = out / 'app'
     app.mkdir()
-    manifest = {'appUniversalName': 'dev.orus.sst14', 'nativeUrlScheme': 'dev.orus.sst14',
+    manifest = {'appUniversalName': 'ss-t14-runtime-check', 'nativeUrlScheme': 'dev.orus.sst14',
                 'productName': 'SS-T14 Runtime Check', 'version': '1.0.0', 'capabilities': []}
     (app / 'waid-package.json').write_text(json.dumps(manifest) + '\n')
     (app / 'index.html').write_text('''<!doctype html><html><head><meta charset="utf-8">
 <title>SS-T14 Runtime Check</title><style>
 body{margin:24px;background:#101827;color:white;font:20px sans-serif}
+#status{position:absolute;left:24px;top:240px}#frames{position:absolute;left:24px;top:300px}
 button{position:absolute;left:24px;top:160px;width:360px;height:64px;background:#22c99a;border:0;font:20px sans-serif}
 </style></head><body><h1>SS-T14 app launch</h1>
 <p>Standalone waid-shell · Debian package · labwc</p><p id="status">Clicks: 0</p>
 <button id="go">Test native input</button><small id="frames"></small><script>
 globalThis.ssT14Clicks=0;globalThis.ssT14Ready=true;globalThis.ssT14Frames=0;
-document.getElementById('go').onclick=()=>{ssT14Clicks++;document.getElementById('status').textContent='Clicks: '+ssT14Clicks;};
+document.getElementById('go').addEventListener('click',()=>{ssT14Clicks++;document.getElementById('status').textContent='Clicks: '+ssT14Clicks;});
 requestAnimationFrame(function tick(){document.getElementById('frames').textContent='Frame '+(++ssT14Frames);requestAnimationFrame(tick);});
 </script></body></html>''')
     steps = [{'wait_for_js': 'globalThis.ssT14Ready===true', 'timeout_ms': 20000},
+             {'wait_for_js': 'globalThis.ssT14Frames>=10', 'timeout_ms': 20000},
              {'cursor': [180, 192]}, {'mouse_left': 'down'}, {'mouse_left': 'up'},
              {'wait_for_js': 'globalThis.ssT14Clicks===1', 'timeout_ms': 5000},
              {'eval_js': 'JSON.stringify({proof:"SS-T14",clicks:ssT14Clicks,title:document.title})'},

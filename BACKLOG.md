@@ -12,8 +12,10 @@ Current runtime migration: [SS-T14](../DETIR_WAID/docs/backlog/ss-1-invert-the-s
 is tracked in the cross-repository backlog. The Debian install target is
 `/usr/bin/waid-shell`; current launchers pass an app path directly. Archive/CLI
 checks refuse retired browser executables. The older completed entries below
-retain their original evidence; the new standalone package/image/labwc acceptance
-is in progress. Source builds use `ORUS_DETIR_DIR`; the public lock still records
+retain their original evidence. The rebuilt ARM64 live image launches the installed
+standalone package under labwc, including JS and native pointer input (2026-10-31).
+Evidence: [SS-T14 verification](../DETIR_WAID/docs/findings/ss-t14-distro-runtime-and-labwc.md).
+Source builds use `ORUS_DETIR_DIR`; the public lock still records
 legacy releases and cannot qualify the new product. Shared-library deployment
 remains SS-T17, separate from this standalone package migration.
 
@@ -71,6 +73,8 @@ Ordering: after Phase 1.
 - [ ] Build the apps in the package build without staged files: `debian/rules` needs `nodejs` and `npm` on the builder for `scripts/build-apps.sh`.
 - [ ] Build the packages for x86_64 on an x86_64 builder.
 - [ ] [DIST-RT1] Publish qualified standalone `waid-shell` archives for arm64 and x64, then replace the legacy `runtime.lock` pins with verified release URLs and hashes. Until publication, build from current source with `ORUS_DETIR_DIR`; the fetcher refuses the old combined browser archives. Publication remains subject to the existing release gates.
+- [ ] [DIST-RT2] Resolve the Linux runtime's background `zbus` panic (“no reactor running”) before release; the SS-T14 live app still renders, runs JS and accepts native input. Preserve the failing log and verify affected D-Bus services after the fix. Evidence: `outputs/ss-t14/ss-t14-proof-6-backtrace/runtime.log` in the sibling DETIR_WAID workspace.
+- [ ] [DIST-RT3] Investigate the SS-T14 native-click fixture failure with `button.onclick = ...`; the same fixture passes with `addEventListener('click', ...)`. Add a runtime regression and qualify both handler routes before claiming broader input parity. Evidence: SS-T14 attempts 3/4 versus 5/6 in the sibling workspace.
 - [x] Ship `react-shadcn-suite` as a built bundle in the package, for testing media and forms; `scripts/build-apps.sh` copies a bundle that has a `waid-package.json` as it is.
       Evidence: distro `17c84fa`; the `detir-shell` deb carries it and the session installs it per user. Its sample media needs its terms checked before a public release (`assets/NOTICE.md`).
 

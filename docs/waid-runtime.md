@@ -36,8 +36,11 @@ the current local validation route. License terms are unchanged.
 
 ## Booted-image acceptance
 
-After building the desktop image, boot it and run this from its normal labwc
-user session (copy the two Python helper files there if the source is absent):
+After building the desktop image, boot it and log in normally to unlock the
+keyring. Install observation tools in the live overlay with
+`sudo apt-get install --no-install-recommends wlrctl grim` if they are absent.
+Run this from the normal labwc user session (copy the two Python helper files
+there if the source is absent):
 
 ```sh
 python3 scripts/check_runtime_image.py --out /tmp/ss-t14-proof
@@ -55,3 +58,13 @@ A passing check covers this standalone package/image launch. It does not qualify
 full browser parity, physical GPU performance, all Linux hardware, shared-library
 packaging or release publication. Retain the built ISO and Debian artifact hashes
 alongside the live-image receipt to identify the booted build.
+
+## Current evidence (2026-10-31)
+
+The ARM64 Debian package and rebuilt live ISO passed this check after normal
+login; both runtime and labwc desktop screenshots show “Clicks: 1”. The running
+executable matches the packaged and squashfs binary. See the cross-repository
+[SS-T14 evidence](../../DETIR_WAID/docs/findings/ss-t14-distro-runtime-and-labwc.md).
+The fixture uses `addEventListener`; earlier `onclick` property attempts failed.
+The passing launch also logs a background `zbus` reactor panic. These runtime
+issues remain DIST-RT2/DIST-RT3; this package acceptance is not release qualification.
