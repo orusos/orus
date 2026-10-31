@@ -10,7 +10,7 @@ mkdir -p "$root/licenses"
 crates() { # workspace-dir package output-name
     {
         for target in aarch64-unknown-linux-gnu x86_64-unknown-linux-gnu; do
-            (cd "$1" && cargo tree -p "$2" -e normal --target "$target" \
+            (cd "$1" && cargo tree --locked -p "$2" -e normal --target "$target" \
                 --prefix none --format "{p}|{l}")
         done
     } | sed 's/ *(\*)//; s/ ([^)]*)//' \

@@ -14,8 +14,15 @@ override_dh_auto_build:
 override_dh_auto_install:
 	:
 
+# Refuse stale/misnamed browser artifacts even when a builder reuses out/bin.
+override_dh_install:
+	scripts/check-runtime.sh
+	dh_install
+
 override_dh_auto_test:
-	:
+	python3 -m unittest discover -s scripts -p 'test_runtime*.py'
+	cargo test --locked --manifest-path shell/Cargo.toml -p orus --test runtime_launch
+	cargo test --locked --manifest-path shell/Cargo.toml -p orus-shell --test web_app
 
 # The installer reads the license from the file, so keep it uncompressed.
 override_dh_compress:

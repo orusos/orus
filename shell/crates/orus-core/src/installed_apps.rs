@@ -1,7 +1,7 @@
 //! Web apps installed under the Orus OS apps directory.
 //!
 //! An installed app is a built web bundle: a directory with an `index.html`
-//! and a `waid-package.json`. The manifest rules are the ones `detir-scene`
+//! and a `waid-package.json`. The manifest rules are the ones `waid-shell`
 //! enforces for an app-shell launch (`waid_launch/discovery.rs`), so an app
 //! that installs here can be started.
 
@@ -163,7 +163,7 @@ pub fn list(apps_dir: &Path) -> Vec<InstalledApp> {
             })
         })
         .collect();
-    apps.sort_by(|a, b| a.name.to_lowercase().cmp(&b.name.to_lowercase()));
+    apps.sort_by_key(|app| app.name.to_lowercase());
     apps
 }
 

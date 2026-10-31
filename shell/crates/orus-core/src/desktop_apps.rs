@@ -62,10 +62,11 @@ fn split_exec(exec: &str) -> Vec<String> {
                     word.push(next);
                 }
             }
-            '%' => match chars.next() {
-                Some('%') => word.push('%'),
-                Some(_) | None => {}
-            },
+            '%' => {
+                if let Some('%') = chars.next() {
+                    word.push('%');
+                }
+            }
             c if c.is_whitespace() && !quoted => {
                 if started {
                     words.push(std::mem::take(&mut word));

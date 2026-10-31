@@ -17,18 +17,14 @@ fn page_title_reads_the_title_element() {
 }
 
 #[test]
-fn launch_target_uses_the_app_shell_only_for_apps_with_a_manifest() {
+fn launch_target_passes_a_directory_or_bare_html_directly_to_waid() {
     use orus_shell::web_app::launch_target;
     let dir = tempfile::tempdir().unwrap();
     let index = dir.path().join("index.html");
     std::fs::write(&index, "<html></html>").unwrap();
 
-    let (name, value) = launch_target(&index);
-    assert_eq!(name, "DETIR_INITIAL_URL");
-    assert_eq!(value, format!("file://{}", index.display()));
+    assert_eq!(launch_target(&index), index);
 
     std::fs::write(dir.path().join("waid-package.json"), "{}").unwrap();
-    let (name, value) = launch_target(&index);
-    assert_eq!(name, "DETIR_WAID_APP_PATH");
-    assert_eq!(value, dir.path().display().to_string());
+    assert_eq!(launch_target(&index), dir.path());
 }

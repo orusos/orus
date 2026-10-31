@@ -1,7 +1,7 @@
 //! Orus OS Core — app manifest, package loading, and multi-app management.
 //!
 //! This crate provides Orus OS-specific types that sit on top of the Detir stack.
-//! Input events, rendering and windowing live in the shell crate; apps run in `detir-scene`.
+//! Input events, rendering and windowing live in the shell crate; apps run in `waid-shell`.
 
 pub mod app;
 pub mod appearance;

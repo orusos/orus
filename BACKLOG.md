@@ -8,6 +8,15 @@ runtime in `detir`, both pinned under `src/`. `br2-orus/` stays for fixed hardwa
 
 Chronology, reasoning and what was ruled out are in `work-log/`.
 
+Current runtime migration: [SS-T14](../DETIR_WAID/docs/backlog/ss-1-invert-the-scene-shell-dependency.md#SS-T14)
+is tracked in the cross-repository backlog. The Debian install target is
+`/usr/bin/waid-shell`; current launchers pass an app path directly. Archive/CLI
+checks refuse retired browser executables. The older completed entries below
+retain their original evidence; the new standalone package/image/labwc acceptance
+is in progress. Source builds use `ORUS_DETIR_DIR`; the public lock still records
+legacy releases and cannot qualify the new product. Shared-library deployment
+remains SS-T17, separate from this standalone package migration.
+
 ## Phase 1: Linux bring-up in a Debian VM
 
 Status: done except two items.
@@ -61,6 +70,7 @@ Ordering: after Phase 1.
 - [ ] Return to Debian's labwc when a release shipping 0.9 or newer reaches stable or backports.
 - [ ] Build the apps in the package build without staged files: `debian/rules` needs `nodejs` and `npm` on the builder for `scripts/build-apps.sh`.
 - [ ] Build the packages for x86_64 on an x86_64 builder.
+- [ ] [DIST-RT1] Publish qualified standalone `waid-shell` archives for arm64 and x64, then replace the legacy `runtime.lock` pins with verified release URLs and hashes. Until publication, build from current source with `ORUS_DETIR_DIR`; the fetcher refuses the old combined browser archives. Publication remains subject to the existing release gates.
 - [x] Ship `react-shadcn-suite` as a built bundle in the package, for testing media and forms; `scripts/build-apps.sh` copies a bundle that has a `waid-package.json` as it is.
       Evidence: distro `17c84fa`; the `detir-shell` deb carries it and the session installs it per user. Its sample media needs its terms checked before a public release (`assets/NOTICE.md`).
 

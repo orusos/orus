@@ -2,7 +2,7 @@ Source: orus
 Section: x11
 Priority: optional
 Maintainer: Orus OS <partha.yp@gmail.com>
-Build-Depends: debhelper-compat (= 13)
+Build-Depends: debhelper-compat (= 13), python3
 Standards-Version: 4.7.0
 Rules-Requires-Root: no
 
@@ -23,8 +23,8 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  gstreamer1.0-pipewire,
  pipewire-audio,
  fonts-noto-core | fonts-dejavu-core
-Description: Detir runtime for waid web apps
- One shared runtime that opens a built web app (index.html plus
+Description: Standalone WAID app runtime
+ The waid-shell executable opens a built web app (index.html plus
  waid-package.json) in its own window. Apps are plain web bundles; they do
  not embed the runtime. Video, audio, camera and microphone go through GStreamer and the
  system's PipeWire server.

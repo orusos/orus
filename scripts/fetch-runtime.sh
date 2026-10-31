@@ -25,12 +25,7 @@ work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 curl -fsSL -o "$work/runtime.tgz" "$url"
 echo "$sha  $work/runtime.tgz" | sha256sum -c - >/dev/null
-# Older pinned releases called the runtime detir-scene. Normalize the installed
-# name while retaining the pinned archive and its verified checksum.
-member=waid-shell
-if ! tar -tzf "$work/runtime.tgz" | grep -Fxq "$member"; then
-    member=detir-scene
-fi
-tar -xzf "$work/runtime.tgz" -C "$work" "$member"
-mkdir -p "$out"
-install -m 755 "$work/$member" "$out/waid-shell"
+# A renamed legacy browser binary is not the standalone WAID product. Validate
+# the archive, target architecture and actual CLI before replacing staged output.
+python3 "$root/scripts/runtime_artifact.py" --arch "$arch" --check-cli \
+    --archive "$work/runtime.tgz" --destination "$out/waid-shell"

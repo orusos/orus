@@ -7,19 +7,14 @@
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
-/// The environment variable and value that start `waid-shell` on `index_html`.
-///
-/// An app with a `waid-package.json` starts in the app shell: no browser
-/// toolbar, titled and identified from that manifest. A bare bundle opens as a
-/// page by URL.
-pub fn launch_target(index_html: &Path) -> (&'static str, String) {
-    let app_dir = index_html.parent();
-    match app_dir.filter(|dir| dir.join("waid-package.json").is_file()) {
-        Some(dir) => ("DETIR_WAID_APP_PATH", dir.display().to_string()),
-        None => (
-            "DETIR_INITIAL_URL",
-            format!("file://{}", index_html.display()),
-        ),
+/// The direct WAID CLI argument: an app directory with a manifest, or a bare HTML file.
+pub fn launch_target(index_html: &Path) -> PathBuf {
+    match index_html
+        .parent()
+        .filter(|dir| dir.join("waid-package.json").is_file())
+    {
+        Some(dir) => dir.to_path_buf(),
+        None => index_html.to_path_buf(),
     }
 }
 
@@ -56,11 +51,11 @@ pub fn launch(index_html: &Path, shell_size: (f64, f64)) -> std::io::Result<()> 
             .map(|name| name.to_string_lossy().into_owned())
             .unwrap_or_else(|| "Orus OS App".to_string())
     });
-    let (launch_env, launch_value) = launch_target(index_html);
+    let target = launch_target(index_html);
     let (width, height) = crate::external_app::app_window_size(shell_size);
     let mut command = Command::new(program);
     command
-        .env(launch_env, launch_value)
+        .arg(target)
         .env("DETIR_WINDOW_TITLE", title)
         .env("DETIR_WINDOW_WIDTH", width.to_string())
         .env("DETIR_WINDOW_HEIGHT", height.to_string())

@@ -10,6 +10,8 @@ binary=$2
 url=$3
 
 root=$(cd "$(dirname "$0")/.." && pwd)
+[ "$(basename "$binary")" = waid-shell ] || { echo 'pack-runtime: expected the standalone waid-shell binary' >&2; exit 1; }
+python3 "$root/scripts/runtime_artifact.py" --arch "$arch" --binary "$binary"
 mkdir -p "$root/out"
 archive="$root/out/waid-shell-$arch.tar.gz"
 tar -czf "$archive" -C "$(dirname "$binary")" "$(basename "$binary")"

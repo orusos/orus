@@ -135,7 +135,7 @@ fn open_app(store: &Store, id: &str) -> Result<()> {
         _ => PathBuf::from("waid-shell"),
     };
     std::process::Command::new(&program)
-        .env("DETIR_WAID_APP_PATH", store.paths.apps_dir.join(id))
+        .arg(store.paths.apps_dir.join(id))
         .env("DETIR_WINDOW_TITLE", &info.name)
         .env("DETIR_UI_SCALE", orus_core::design::SCALE.to_string())
         .stdin(std::process::Stdio::null())
@@ -273,7 +273,8 @@ fn catalog_command(mut args: Vec<String>) -> Result<()> {
             opts.write(true).create_new(true);
             #[cfg(unix)]
             std::os::unix::fs::OpenOptionsExt::mode(&mut opts, 0o600);
-            opts.open(format!("{name}.key"))?.write_all(private.as_ref())?;
+            opts.open(format!("{name}.key"))?
+                .write_all(private.as_ref())?;
             std::fs::write(format!("{name}.pub"), public)?;
             println!("wrote {name}.key (keep it secret) and {name}.pub");
         }

@@ -4,7 +4,7 @@ Upstream-Contact: Splenta Inc
 Source: https://github.com/splentainc/orus
 Comment:
  This source package builds two binary packages with different terms.
- waid-runtime (the detir-scene runtime) is proprietary software of Splenta
+ waid-runtime (the waid-shell executable) is proprietary software of Splenta
  Inc. detir-shell and the distribution files are free software.
  .
  The Rust crates linked into each binary are listed with the licenses they
@@ -34,7 +34,7 @@ License: BSD-3-Clause and others
  others) keep their own licenses. All of the texts are installed in
  /usr/share/doc/detir-shell/pdfium.
 
-Files: usr/bin/detir-scene
+Files: usr/bin/waid-shell
 Copyright: 2026 Splenta Inc
 License: BUSL-1.1
  waid-runtime is licensed under the Business Source License 1.1, in

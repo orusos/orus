@@ -1,4 +1,6 @@
-# The prebuilt runtime (detir-scene) that scripts/fetch-runtime.sh downloads.
+# Legacy combined-runtime release pins retained for provenance.
+# These detir-scene archives are refused by the current standalone WAID fetcher.
+# Build with ORUS_DETIR_DIR until canonical waid-shell releases are published/pinned.
 # One line per architecture: <arch> <sha256 of the .tar.gz> <url>
 # Make a line with scripts/pack-runtime.sh. arch is arm64 or x64.
 arm64 ecb94abdebd8b42112e50ead9f9c61aca21408b217234220ae04113fc5a0aac8 https://packages.kilne.dev/runtime/0.1.0-5f65c6fd/detir-scene-arm64.tar.gz
