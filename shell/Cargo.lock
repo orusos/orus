@@ -2043,7 +2043,7 @@ checksum = "92ecc6618181def0457392ccd0ee51198e065e016d1d527a7ac1b6dc7c1f09d2"
 [[package]]
 name = "jag-draw"
 version = "0.1.1"
-source = "git+https://github.com/jag-rs/jag?branch=dev#25d6b8de0c3ab6a244c364743a5ef51e24bf4d2e"
+source = "git+https://github.com/splentainc/jag?branch=dev#25d6b8de0c3ab6a244c364743a5ef51e24bf4d2e"
 dependencies = [
  "anyhow",
  "bytemuck",
@@ -2068,7 +2068,7 @@ dependencies = [
 [[package]]
 name = "jag-shaders"
 version = "0.1.1"
-source = "git+https://github.com/jag-rs/jag?branch=dev#25d6b8de0c3ab6a244c364743a5ef51e24bf4d2e"
+source = "git+https://github.com/splentainc/jag?branch=dev#25d6b8de0c3ab6a244c364743a5ef51e24bf4d2e"
 dependencies = [
  "bytemuck",
 ]
@@ -2076,7 +2076,7 @@ dependencies = [
 [[package]]
 name = "jag-surface"
 version = "0.1.1"
-source = "git+https://github.com/jag-rs/jag?branch=dev#25d6b8de0c3ab6a244c364743a5ef51e24bf4d2e"
+source = "git+https://github.com/splentainc/jag?branch=dev#25d6b8de0c3ab6a244c364743a5ef51e24bf4d2e"
 dependencies = [
  "anyhow",
  "image",
@@ -2086,7 +2086,7 @@ dependencies = [
 [[package]]
 name = "jag-text"
 version = "0.1.1"
-source = "git+https://github.com/jag-rs/jag?branch=dev#25d6b8de0c3ab6a244c364743a5ef51e24bf4d2e"
+source = "git+https://github.com/splentainc/jag?branch=dev#25d6b8de0c3ab6a244c364743a5ef51e24bf4d2e"
 dependencies = [
  "arboard",
  "fontdb 0.23.0",

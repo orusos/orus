@@ -13,11 +13,11 @@ strings:
     versionedName:       Orus OS
     shortVersionedName:  Orus OS
     bootloaderEntryName: Orus OS
-    productUrl:          https://github.com/orusos
-    supportUrl:          https://github.com/orusos
-    knownIssuesUrl:      https://github.com/orusos
-    releaseNotesUrl:     https://github.com/orusos
-    donateUrl:           https://github.com/orusos
+    productUrl:          https://github.com/splentainc
+    supportUrl:          https://github.com/splentainc
+    knownIssuesUrl:      https://github.com/splentainc
+    releaseNotesUrl:     https://github.com/splentainc
+    donateUrl:           https://github.com/splentainc
 sidebar: qml
 navigation: widget
 images:

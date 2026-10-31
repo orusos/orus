@@ -44,10 +44,10 @@ chrono = "0.4"
 rfd = "0.15"
 
 # Jag crates (GPU renderer, canvas, text — published to crates.io)
-jag-draw = { git = "https://github.com/jag-rs/jag", branch = "dev" }
-jag-shaders = { git = "https://github.com/jag-rs/jag", branch = "dev" }
-jag-surface = { git = "https://github.com/jag-rs/jag", branch = "dev" }
-jag-text = { git = "https://github.com/jag-rs/jag", branch = "dev" }
+jag-draw = { git = "https://github.com/splentainc/jag", branch = "dev" }
+jag-shaders = { git = "https://github.com/splentainc/jag", branch = "dev" }
+jag-surface = { git = "https://github.com/splentainc/jag", branch = "dev" }
+jag-text = { git = "https://github.com/splentainc/jag", branch = "dev" }
 orus-terminal = { path = "crates/system-apps/orus-terminal" }
 orus-textedit = { path = "crates/system-apps/orus-textedit" }
 

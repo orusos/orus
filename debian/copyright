@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Orus OS
 Upstream-Contact: Splenta Inc
-Source: https://github.com/orusos/orus
+Source: https://github.com/splentainc/orus
 Comment:
  This source package builds two binary packages with different terms.
  waid-runtime (the detir-scene runtime) is proprietary software of Splenta

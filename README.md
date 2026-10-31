@@ -8,7 +8,7 @@ status: `BACKLOG.md`.
 
 The shell (launcher, panel, Files, Terminal, Text Edit, Viewer, `orus`) is in `shell/`;
 it builds with `cargo` and needs only the public `jag` crates, which Cargo fetches from
-`github.com/jag-rs/jag`. labwc comes from Debian's package, built by `scripts/build-labwc.sh`.
+`github.com/splentainc/jag`. labwc comes from Debian's package, built by `scripts/build-labwc.sh`.
 
 The web-app runtime (`detir-scene`, packaged as `waid-runtime`) is a prebuilt binary under
 the Business Source License 1.1. `scripts/fetch-runtime.sh` downloads the release that `runtime.lock` pins,
@@ -18,7 +18,7 @@ checkout and `scripts/build.sh` builds it instead.
 ## Build
 
 ```
-git clone https://github.com/orusos/orus.git
+git clone https://github.com/splentainc/orus.git
 cd orus && scripts/build.sh
 ```
 
