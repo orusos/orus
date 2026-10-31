@@ -11,8 +11,7 @@
 #
 # ORUS_DEV_SSH_KEY=/path/to/key.pub builds a DEVELOPMENT desktop ISO: the SSH server runs
 # on live media for that one key (passwords off), so a developer can log in to the live
-# user and fix things. Every copy of such an ISO shares its SSH host keys and trusts that
-# key: never publish one. Without the variable the live medium keeps SSH off.
+# user and fix things. Every copy trusts that development key: never publish one. Without the variable the live medium keeps SSH off.
 set -eu
 
 root=$(cd "$(dirname "$0")/.." && pwd)
@@ -30,7 +29,7 @@ if [ "${EDITION:-desktop}" = server ]; then
     rm -rf "$build/config/package-lists" "$build/config/hooks" "$build/config/includes.chroot_after_packages/etc/skel" "$build/config/includes.binary"
     cp -R "$root/iso/server/config/." "$build/config/"
 else
-    cp "$root"/../detir-shell_*.deb "$root"/../waid-runtime_*.deb "$root"/../orus-installer_*.deb "$root"/../orus-login_*.deb "$root"/../labwc_*.deb \
+    cp "$root"/../detir-shell_*.deb "$root"/../waid-runtime_*.deb "$root"/../cerlus_*.deb "$root"/../detir-runtime-shared_*.deb "$root"/../orus-installer_*.deb "$root"/../orus-login_*.deb "$root"/../labwc_*.deb \
         "$build/config/packages.chroot/"
 fi
 

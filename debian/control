@@ -2,11 +2,11 @@ Source: orus
 Section: x11
 Priority: optional
 Maintainer: Orus OS <partha.yp@gmail.com>
-Build-Depends: debhelper-compat (= 13), python3
+Build-Depends: debhelper-compat (= 13), python3, patchelf, binutils
 Standards-Version: 4.7.0
 Rules-Requires-Root: no
 
-Package: waid-runtime
+Package: detir-runtime-shared
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
  libwayland-client0,
@@ -23,11 +23,24 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  gstreamer1.0-pipewire,
  pipewire-audio,
  fonts-noto-core | fonts-dejavu-core
-Description: Standalone WAID app runtime
- The waid-shell executable opens a built web app (index.html plus
- waid-package.json) in its own window. Apps are plain web bundles; they do
- not embed the runtime. Video, audio, camera and microphone go through GStreamer and the
- system's PipeWire server.
+Description: Exact-build shared Detir desktop runtime
+ The common renderer, event loop and web runtime, with the matched Rust standard
+ library in a private ABI-versioned directory. Cerlus and WAID keep separate
+ product implementations and processes. Upgrade the matched package set together.
+
+Package: waid-runtime
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, detir-runtime-shared (= ${binary:Version})
+Description: WAID app shell over the shared Detir runtime
+ The waid-shell executable opens a built app in its own window. Each app has its
+ own process and state, using the same installed runtime library as Cerlus.
+
+Package: cerlus
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, detir-runtime-shared (= ${binary:Version})
+Description: Cerlus browser over the shared Detir runtime
+ The browser shell, including its own chrome and local agent/workflow product
+ code. Browser product code is not part of the shared runtime or WAID.
 
 Package: detir-shell
 Architecture: any

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the standalone Linux WAID product before staging or packaging it."""
+"""Validate the Linux WAID CLI/ELF before staging either deployment layout."""
 import argparse
 import os
 from pathlib import Path
@@ -13,7 +13,7 @@ import tempfile
 MACHINES = {'arm64': 183, 'aarch64': 183, 'x64': 62, 'amd64': 62, 'x86_64': 62}
 
 
-def check_elf(binary, arch):
+def check_elf(binary, arch, executable=True):
     if binary.is_symlink() or not binary.is_file():
         raise ValueError('runtime must be a regular executable file')
     with binary.open('rb') as stream:
@@ -23,7 +23,7 @@ def check_elf(binary, arch):
     kind, machine = struct.unpack('<HH', header[16:20])
     if kind not in (2, 3) or machine != MACHINES[arch]:
         raise ValueError(f'runtime ELF architecture does not match {arch}')
-    if not os.access(binary, os.X_OK):
+    if executable and not os.access(binary, os.X_OK):
         raise ValueError('runtime is not executable')
 
 

@@ -1,3 +1,28 @@
+orus (0.1.0+sst17.4) unstable; urgency=medium
+
+  * Qualify final-source matched ABI upgrade and rollback.
+
+ -- Orus OS <partha.yp@gmail.com>  Sat, 31 Oct 2026 20:01:00 +0530
+
+orus (0.1.0+sst17.3) unstable; urgency=medium
+
+  * Rebuild the matched set from the final lint-clean source snapshot.
+
+ -- Orus OS <partha.yp@gmail.com>  Sat, 31 Oct 2026 20:00:00 +0530
+
+orus (0.1.0+sst17.2) unstable; urgency=medium
+
+  * Qualify matched package upgrade and rollback with a distinct recorded ABI.
+
+ -- Orus OS <partha.yp@gmail.com>  Sat, 31 Oct 2026 19:00:00 +0530
+
+orus (0.1.0+sst17.1) unstable; urgency=medium
+
+  * Add matched shared-runtime, Cerlus and WAID development packages.
+  * Pin private Rust ABI loader identities and preserve standalone builds.
+
+ -- Orus OS <partha.yp@gmail.com>  Sat, 31 Oct 2026 18:00:00 +0530
+
 orus (0.1.0) unstable; urgency=medium
 
   * Initial packaging: detir-shell and waid-runtime.

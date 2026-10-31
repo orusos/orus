@@ -5,7 +5,7 @@
 
 # The binaries come from cargo, not from a Debian build system.
 override_dh_auto_build:
-	scripts/build.sh
+	ORUS_RUNTIME_LAYOUT=shared scripts/build.sh
 	scripts/fetch-pdfium.sh
 	[ -f out/apps/orus-store/index.html ] || scripts/build-apps.sh orus-store
 	[ -f out/apps/system-settings/index.html ] || scripts/build-apps.sh
@@ -17,6 +17,7 @@ override_dh_auto_install:
 # Refuse stale/misnamed browser artifacts even when a builder reuses out/bin.
 override_dh_install:
 	scripts/check-runtime.sh
+	test -f out/runtime-deployment.json
 	dh_install
 
 override_dh_auto_test:
@@ -26,7 +27,22 @@ override_dh_auto_test:
 
 # The installer reads the license from the file, so keep it uncompressed.
 override_dh_compress:
-	dh_compress -Xusr/share/doc/waid-runtime/LICENSE-waid-runtime-BSL-1.1.txt
+	dh_compress -Xusr/share/doc/waid-runtime/LICENSE-waid-runtime-BSL-1.1.txt -Xusr/share/doc/detir-runtime-shared/rust/
 
 override_dh_auto_clean:
 	:
+
+# Keep matched release hashes intact, including Rust metadata/loader identities.
+# These private libraries use exact package dependencies, not a stable public ABI.
+override_dh_strip:
+	dh_strip -Xusr/lib/detir/ -Xusr/bin/waid-shell -Xusr/bin/cerlus
+
+override_dh_makeshlibs:
+	dh_makeshlibs -pdetir-runtime-shared -V'detir-runtime-shared (= $(shell dpkg-parsechangelog -S Version))'
+
+override_dh_shlibdeps:
+	dh_shlibdeps -l$(CURDIR)/debian/detir-runtime-shared/usr/lib/detir/$(shell cat out/runtime-abi.txt)
+
+# The copied Rust standard library can carry toolchain debug data too.
+override_dh_dwz:
+	dh_dwz -Xusr/lib/detir/ -Xusr/bin/waid-shell -Xusr/bin/cerlus

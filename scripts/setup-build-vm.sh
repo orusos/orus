@@ -13,7 +13,7 @@ build="build-essential pkg-config git curl cmake clang python3
 web="nodejs npm"
 
 # Packages and ISO.
-packaging="debhelper dpkg-dev fakeroot lintian live-build debootstrap squashfs-tools xorriso"
+packaging="patchelf binutils debhelper dpkg-dev fakeroot lintian live-build debootstrap squashfs-tools xorriso"
 
 # Copying sources in and out, and running the session for a headless check.
 # labwc is built from source (scripts/build-labwc.sh): its build packages.
@@ -43,4 +43,5 @@ fi
 
 echo
 echo "Ready. In a new shell (or after '. ~/.cargo/env'):"
+echo "  export ORUS_DETIR_DIR=/path/to/current/detir"
 echo "  scripts/build.sh && scripts/build-apps.sh && dpkg-buildpackage -b -us -uc && scripts/build-iso.sh"

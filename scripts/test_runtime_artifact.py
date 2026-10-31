@@ -50,6 +50,11 @@ class RuntimeArtifact(unittest.TestCase):
             with self.assertRaises(ValueError):
                 check_elf(self.binary(data), 'arm64')
 
+    def test_shared_library_does_not_require_an_executable_file_mode(self):
+        p = self.binary(self.elf())
+        p.chmod(0o644)
+        check_elf(p, 'arm64', executable=False)
+
     def test_nonexecutable_binary_is_rejected(self):
         p = self.binary(self.elf())
         p.chmod(0o644)

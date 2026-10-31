@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Cerlus
+Comment=Browse with Cerlus
+Exec=cerlus
+Icon=web-browser
+Terminal=false
+Categories=Network;WebBrowser;

@@ -17,7 +17,11 @@ standalone package under labwc, including JS and native pointer input (2026-10-3
 Evidence: [SS-T14 verification](../DETIR_WAID/docs/findings/ss-t14-distro-runtime-and-labwc.md).
 Source builds use `ORUS_DETIR_DIR`; the public lock still records
 legacy releases and cannot qualify the new product. Shared-library deployment
-remains SS-T17, separate from this standalone package migration.
+is implemented under SS-T17, separate from the completed standalone migration.
+Matched private-library packages retain standalone builds. Installed ARM64
+Cerlus/WAID, shared inode, rendering/input comparison, upgrade, mixed-version
+refusal and rollback checks passed; final cross-repository CI/closeout is tracked
+in the canonical SS-T17 item. See [evidence](../DETIR_WAID/docs/findings/ss-t17-shared-runtime-deployment.md).
 
 ## Phase 1: Linux bring-up in a Debian VM
 

@@ -6,17 +6,23 @@ set -eu
 
 root=$(cd "$(dirname "$0")/.." && pwd)
 mkdir -p "$root/licenses"
+work=$(mktemp -d)
+trap 'rm -rf "$work"' EXIT
 
-crates() { # workspace-dir package output-name
-    {
-        for target in aarch64-unknown-linux-gnu x86_64-unknown-linux-gnu; do
-            (cd "$1" && cargo tree --locked -p "$2" -e normal --target "$target" \
-                --prefix none --format "{p}|{l}")
-        done
-    } | sed 's/ *(\*)//; s/ ([^)]*)//' \
+crates() { # workspace-dir package output-name optional-features
+    features=${4:-}
+    list="$work/$3"
+    : > "$list"
+    for target in aarch64-unknown-linux-gnu x86_64-unknown-linux-gnu; do
+        (cd "$1" && cargo tree --locked -p "$2" -e normal --target "$target" \
+            --prefix none --format "{p}|{l}" --features "$features") >> "$list"
+    done
+    sed 's/ *(\*)//; s/ ([^)]*)//' "$list" \
       | awk -F'|' '{ lic = ($2 == "" ? "no license declared (Splenta Inc crate)" : $2); print $1 " - " lic }' \
       | sort -u > "$root/licenses/$3-crates.txt"
 }
 
-crates "${ORUS_DETIR_DIR:?set ORUS_DETIR_DIR to a Detir checkout}" waid-shell waid-runtime
+crates "${ORUS_DETIR_DIR:?set ORUS_DETIR_DIR to a Detir checkout}" waid-shell waid-runtime shared-runtime
 crates "$root/shell" orus-linux detir-shell
+crates "$ORUS_DETIR_DIR" cerlus-shell cerlus shared-runtime
+crates "$ORUS_DETIR_DIR" detir-runtime-shared detir-runtime-shared detir-scene/web-compat-v8,detir-scene/media-gstreamer,detir-scene/file-dialogs,detir-scene/web-fonts

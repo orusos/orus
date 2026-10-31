@@ -154,6 +154,7 @@ detir-mcp v0.1.0 - MIT OR Apache-2.0
 detir-media v0.1.0 - MIT OR Apache-2.0
 detir-platform v0.1.0 - MIT OR Apache-2.0
 detir-rps-client v0.1.0 - no license declared (Splenta Inc crate)
+detir-runtime-shared v0.1.0 - MIT OR Apache-2.0
 detir-scene v0.1.0 - no license declared (Splenta Inc crate)
 detir-web v0.1.0 - no license declared (Splenta Inc crate)
 detir-webgpu v0.1.0 - MIT OR Apache-2.0

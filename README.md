@@ -10,15 +10,17 @@ The shell (launcher, panel, Files, Terminal, Text Edit, Viewer, `orus`) is in `s
 it builds with `cargo` and needs only the public `jag` crates, which Cargo fetches from
 `github.com/splentainc/jag`. labwc comes from Debian's package, built by `scripts/build-labwc.sh`.
 
-The web-app runtime (`waid-shell`, packaged as `waid-runtime`) is a prebuilt binary under
-the Business Source License 1.1. `scripts/fetch-runtime.sh` downloads the release that `runtime.lock` pins,
-checked by SHA-256. If you have the runtime's source, set `ORUS_DETIR_DIR` to that
-checkout and `scripts/build.sh` builds it instead.
+The desktop packages default to a shared runtime: `cerlus` and `waid-shell`
+remain separate product executables/processes and dynamically load one matched,
+versioned Detir library. Build the matched set from `ORUS_DETIR_DIR`, or import a
+verified release directory with `ORUS_DEPLOYMENT_DIR`. The runtime retains its
+existing Business Source License 1.1 terms. Standalone source builds remain
+available with `ORUS_RUNTIME_LAYOUT=standalone`.
 
 The current lock still records the older combined runtime release. It is retained
 as provenance and is refused by the fetcher: renaming that binary does not give
 it the standalone WAID CLI. Build from the current Detir source until canonical
-`waid-shell` releases are published and pinned. Both fetch and package staging
+standalone/shared releases are published and pinned. Both fetch and package staging
 validate Linux ELF architecture and the actual `waid-shell --help` contract.
 
 ```sh
@@ -33,21 +35,23 @@ staged executable again before installation into `/usr/bin/waid-shell`.
 
 ```
 git clone https://github.com/splentainc/orus.git
-cd orus && scripts/build.sh
+cd orus
+ORUS_DETIR_DIR=/path/to/current/detir scripts/build.sh
 ```
 
 Needs a Rust toolchain (rustup, stable) and these Debian 13 packages, the
 set the build VM has installed (a superset; GTK/WebKit are not needed):
 
 ```
-build-essential pkg-config git curl cmake clang python3
+build-essential pkg-config git curl cmake clang python3 patchelf binutils
 libwayland-dev libxkbcommon-dev libegl1 libgl1-mesa-dri libgbm-dev libdrm-dev
 libudev-dev libinput-dev libasound2-dev libssl-dev libfontconfig-dev
+libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
 ```
 
 Runtime on the target: `labwc`, `mesa-vulkan-drivers`, and a font package
 (`fonts-noto-core` or `fonts-dejavu-core`). Output: `out/bin/orus-linux`,
-`out/bin/waid-shell`.
+`out/bin/waid-shell`, `out/bin/cerlus`, and `out/lib/detir/<abi>/`.
 
 ## Build machine
 
@@ -55,7 +59,9 @@ On a fresh Debian 13 machine, `scripts/setup-build-vm.sh` installs everything th
 build needs (packages, Node, Rust). Then:
 
 ```
-scripts/build.sh && scripts/build-apps.sh      # binaries and apps
+export ORUS_DETIR_DIR=/path/to/current/detir
+scripts/build.sh
+scripts/build-apps.sh                          # apps
 dpkg-buildpackage -b -us -uc                   # .debs, one level up
 scripts/build-iso.sh                           # live ISO, ../orus-iso-build
 ```
@@ -79,7 +85,8 @@ out/bin/orus update | search [text] | upgrade | rollback <name>
 out/bin/orus catalog build|serve|keygen   # make and serve a catalog (development source)
 ```
 
-The shell has no built-in browser; Chromium is the browser. App launch uses
+The shell has no embedded browser. Chromium remains its existing browser shortcut;
+Cerlus is separately installed as `cerlus`. App launch uses
 `waid-shell /path/to/app` directly (a directory or its `index.html`); there is no
 `waid` subcommand and no browser-only initial-URL fallback.
 
@@ -101,7 +108,7 @@ scripts/pack-runtime.sh arm64 /path/to/waid-shell \
 
 ## License
 
-`waid-runtime` (`waid-shell`) is under the Business Source License 1.1
+`waid-runtime` and the common `detir-runtime-shared` library are under the Business Source License 1.1
 (`licenses/LICENSE-waid-runtime-BSL-1.1.txt`): production use is allowed, and each
 version becomes Apache-2.0 four years after its first public release. Everything
 else here is open source: the distribution files are Apache-2.0, and the

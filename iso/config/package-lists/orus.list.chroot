@@ -1,5 +1,7 @@
 # Installed beside detir-shell and waid-runtime (config/packages.chroot).
 # Their dependencies pull in labwc, chromium, gnome-keyring, fonts and Mesa.
+# Install Cerlus alongside the shared WAID runtime; it remains a separate product.
+cerlus
 sudo
 # Wired and Wi-Fi connections (nmcli, nmtui); nothing else configures the network.
 network-manager
