@@ -108,9 +108,11 @@ scripts/pack-runtime.sh arm64 /path/to/waid-shell \
 
 ## License
 
-`waid-runtime` and the common `detir-runtime-shared` library are under the Business Source License 1.1
-(`licenses/LICENSE-waid-runtime-BSL-1.1.txt`): production use is allowed, and each
-version becomes Apache-2.0 four years after its first public release. Everything
+`waid-runtime`, the common `detir-runtime-shared` library and `cerlus` are under
+the Business Source License 1.1
+(`licenses/LICENSE-waid-runtime-BSL-1.1.txt`). See that file for the Additional Use
+Grant and restrictions. Each version becomes Apache-2.0 four years after its first
+public release. Everything
 else here is open source: the distribution files are Apache-2.0, and the
 shell is Apache-2.0 or MIT. See `debian/copyright`. The crates linked
 into each binary are listed in `licenses/`; regenerate them with

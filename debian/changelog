@@ -1,3 +1,10 @@
+orus (0.1.0+sst17.5) unstable; urgency=medium
+
+  * Align runtime and Cerlus notices with the current Detir dev BSL terms.
+  * Regenerate declared dependency licenses; retain prior package-test evidence.
+
+ -- Orus OS <partha.yp@gmail.com>  Sat, 31 Oct 2026 20:00:00 +0530
+
 orus (0.1.0+sst17.4) unstable; urgency=medium
 
   * Qualify final-source matched ABI upgrade and rollback.

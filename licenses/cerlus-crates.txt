@@ -91,7 +91,7 @@ canvas3d-protocol v0.1.0 - no license declared (Splenta Inc crate)
 capacity_builder v0.1.3 - MIT
 cbc v0.1.2 - MIT OR Apache-2.0
 ccm v0.5.0 - Apache-2.0 OR MIT
-cerlus-shell v0.1.0 - MIT OR Apache-2.0
+cerlus-shell v0.1.0 - BUSL-1.1
 cfg-if v1.0.4 - MIT OR Apache-2.0
 chacha20 v0.9.1 - Apache-2.0 OR MIT
 chacha20poly1305 v0.10.1 - Apache-2.0 OR MIT
@@ -146,22 +146,22 @@ detect-desktop-environment v0.2.0 - MIT
 detir-a11y v0.1.0 - no license declared (Splenta Inc crate)
 detir-canvas v0.1.0 - no license declared (Splenta Inc crate)
 detir-capability v0.1.0 - MIT OR Apache-2.0
-detir-config v0.1.0 - MIT OR Apache-2.0
+detir-config v0.1.0 - BUSL-1.1
 detir-css v0.1.0 - no license declared (Splenta Inc crate)
-detir-gpu-service v0.1.0 - MIT OR Apache-2.0
-detir-inspector v0.1.0 - MIT OR Apache-2.0
+detir-gpu-service v0.1.0 - BUSL-1.1
+detir-inspector v0.1.0 - BUSL-1.1
 detir-io v0.1.0 - no license declared (Splenta Inc crate)
 detir-ir v0.1.0 - no license declared (Splenta Inc crate)
 detir-js v0.1.0 - no license declared (Splenta Inc crate)
-detir-mcp v0.1.0 - MIT OR Apache-2.0
+detir-mcp v0.1.0 - BUSL-1.1
 detir-media v0.1.0 - MIT OR Apache-2.0
 detir-platform v0.1.0 - MIT OR Apache-2.0
 detir-rps-client v0.1.0 - no license declared (Splenta Inc crate)
-detir-runtime-shared v0.1.0 - MIT OR Apache-2.0
+detir-runtime-shared v0.1.0 - BUSL-1.1
 detir-scene v0.1.0 - no license declared (Splenta Inc crate)
 detir-web v0.1.0 - no license declared (Splenta Inc crate)
-detir-webgpu v0.1.0 - MIT OR Apache-2.0
-detir-webview v0.1.0 - MIT OR Apache-2.0
+detir-webgpu v0.1.0 - BUSL-1.1
+detir-webview v0.1.0 - BUSL-1.1
 digest v0.10.7 - MIT OR Apache-2.0
 dirs v4.0.0 - MIT OR Apache-2.0
 dirs v5.0.1 - MIT OR Apache-2.0
@@ -270,7 +270,7 @@ heck v0.5.0 - MIT OR Apache-2.0
 hex v0.4.3 - MIT OR Apache-2.0
 hkdf v0.12.4 - MIT OR Apache-2.0
 hmac v0.12.1 - MIT OR Apache-2.0
-host-functions v0.1.0 - MIT OR Apache-2.0
+host-functions v0.1.0 - BUSL-1.1
 html-escape v0.2.13 - MIT
 html5ever v0.26.0 - MIT OR Apache-2.0
 html5ever v0.29.1 - MIT OR Apache-2.0
@@ -386,11 +386,11 @@ parking_lot v0.12.5 - MIT OR Apache-2.0
 parking_lot_core v0.9.12 - MIT OR Apache-2.0
 paste v1.0.15 - MIT OR Apache-2.0
 pastey v0.2.3 - MIT OR Apache-2.0
-peco-agent v0.1.0 - MIT OR Apache-2.0
-peco-automation v0.1.0 - MIT OR Apache-2.0
-peco-llm v0.1.0 - MIT OR Apache-2.0
-peco-page-reader v0.1.0 - MIT OR Apache-2.0
-peco-workflow v0.1.0 - MIT OR Apache-2.0
+peco-agent v0.1.0 - BUSL-1.1
+peco-automation v0.1.0 - BUSL-1.1
+peco-llm v0.1.0 - BUSL-1.1
+peco-page-reader v0.1.0 - BUSL-1.1
+peco-workflow v0.1.0 - BUSL-1.1
 pem v3.0.6 - MIT
 pem-rfc7468 v0.7.0 - Apache-2.0 OR MIT
 percent-encoding v2.3.2 - MIT OR Apache-2.0
@@ -638,7 +638,7 @@ wgpu-core-deps-windows-linux-android v30.0.0 - MIT OR Apache-2.0
 wgpu-hal v30.0.0 - MIT OR Apache-2.0
 wgpu-naga-bridge v30.0.0 - MIT OR Apache-2.0
 wgpu-types v30.0.0 - MIT OR Apache-2.0
-windows-media v0.1.0 - MIT OR Apache-2.0
+windows-media v0.1.0 - BUSL-1.1
 winit v0.30.13 - Apache-2.0
 winnow v0.5.40 - MIT
 winnow v0.7.15 - MIT

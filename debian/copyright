@@ -4,8 +4,8 @@ Upstream-Contact: Splenta Inc
 Source: https://github.com/splentainc/orus
 Comment:
  This source package builds the desktop session and matched runtime/shell packages.
- waid-runtime and detir-runtime-shared are proprietary software of Splenta
- Inc. detir-shell and the distribution files are free software.
+ waid-runtime, detir-runtime-shared and cerlus are proprietary software of
+ Splenta Inc. detir-shell and the distribution files are free software.
  .
  The Rust crates linked into each binary are listed with the licenses they
  declare in /usr/share/doc/<package>/<package>-crates.txt.
@@ -51,10 +51,11 @@ Comment:
 
 Files: usr/bin/cerlus
 Copyright: 2026 Splenta Inc
-License: Apache-2.0 or MIT
+License: BUSL-1.1
 Comment:
- The Cerlus shell retains the license declared by its source package. The
- separately installed common runtime retains its existing BSL terms.
+ The current Detir/Cerlus source LICENSE covers the browser shell as well as
+ the runtime. Its full text is installed in this package's documentation
+ directory as LICENSE-waid-runtime-BSL-1.1.txt (the retained historical filename).
 
 License: Apache-2.0
  Licensed under the Apache License, Version 2.0 (the "License"); you may not
