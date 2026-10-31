@@ -2,6 +2,7 @@
 name = "orus-viewer"
 edition.workspace = true
 version.workspace = true
+license.workspace = true
 
 [dependencies]
 hayro = "0.8"

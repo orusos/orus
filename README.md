@@ -85,7 +85,7 @@ scripts/pack-runtime.sh arm64 /path/to/detir-scene \
 `waid-runtime` (`detir-scene`) is under the Business Source License 1.1
 (`licenses/LICENSE-waid-runtime-BSL-1.1.txt`): production use is allowed, and each
 version becomes Apache-2.0 four years after its first public release. Everything
-else here is free software: the distribution files are Apache-2.0, and the
+else here is open source: the distribution files are Apache-2.0, and the
 shell is Apache-2.0 or MIT. See `debian/copyright`. The crates linked
 into each binary are listed in `licenses/`; regenerate them with
 `scripts/license-notices.sh` after bumping a pin.

@@ -2,6 +2,7 @@
 name = "orus-linux"
 edition.workspace = true
 version.workspace = true
+license.workspace = true
 
 [dependencies]
 winit = { workspace = true }

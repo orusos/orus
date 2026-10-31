@@ -26,7 +26,7 @@ serde_json = { workspace = true }
 
 **Step 2: Verify it compiles**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo check -p orus-shell`
+Run: `cd <orus-universal checkout> && cargo check -p orus-shell`
 Expected: compiles successfully
 
 **Step 3: Commit**
@@ -180,7 +180,7 @@ pub mod session;
 
 **Step 3: Verify it compiles**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo check -p orus-shell`
+Run: `cd <orus-universal checkout> && cargo check -p orus-shell`
 Expected: compiles successfully
 
 **Step 4: Commit**
@@ -237,7 +237,7 @@ pub fn add(
 
 **Step 3: Verify it compiles (expect errors in main.rs)**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo check -p orus-shell`
+Run: `cd <orus-universal checkout> && cargo check -p orus-shell`
 Expected: orus-shell compiles; orus-macos will fail (fixed in Task 5)
 
 **Step 4: Commit**
@@ -296,7 +296,7 @@ pub fn snapshot_session(&self) -> SessionState {
 
 **Step 2: Verify it compiles**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo check -p orus-shell`
+Run: `cd <orus-universal checkout> && cargo check -p orus-shell`
 Expected: compiles
 
 **Step 3: Commit**
@@ -392,7 +392,7 @@ WindowEvent::CloseRequested => {
 
 **Step 4: Verify it compiles**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo check -p orus-macos`
+Run: `cd <orus-universal checkout> && cargo check -p orus-macos`
 Expected: compiles
 
 **Step 5: Commit**
@@ -616,7 +616,7 @@ let mut shell_bar = ShellBar::new(initial_title);
 
 **Step 4: Verify it compiles and runs**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo build -p orus-macos`
+Run: `cd <orus-universal checkout> && cargo build -p orus-macos`
 Expected: compiles successfully
 
 Run: `cargo run -p orus-macos`
@@ -646,7 +646,7 @@ Search for all `wm.add(` in `main.rs`. The launcher action handlers (around line
 
 **Step 2: Verify it compiles**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo check -p orus-macos`
+Run: `cd <orus-universal checkout> && cargo check -p orus-macos`
 Expected: no errors
 
 **Step 3: Commit**
@@ -663,7 +663,7 @@ git commit -m "fix(orus-macos): add app_id to all dynamic wm.add calls"
 **Step 1: Build and run**
 
 ```bash
-cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal
+cd <orus-universal checkout>
 cargo build -p orus-macos && cargo run -p orus-macos
 ```
 

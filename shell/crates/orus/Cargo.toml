@@ -2,6 +2,7 @@
 name = "orus"
 edition.workspace = true
 version.workspace = true
+license.workspace = true
 description = "Install, update and remove Orus OS web apps"
 
 [[bin]]

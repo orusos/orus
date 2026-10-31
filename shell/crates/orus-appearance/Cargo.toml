@@ -2,6 +2,7 @@
 name = "orus-appearance"
 edition.workspace = true
 version.workspace = true
+license.workspace = true
 description = "Read and change the Orus OS appearance setting"
 
 [[bin]]

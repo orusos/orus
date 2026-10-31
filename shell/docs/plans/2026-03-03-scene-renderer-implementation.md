@@ -98,7 +98,7 @@ Also promote the helper function used by `load_package_from_source`:
 
 **Step 3: Build to verify no breakage**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/detir && cargo build -p detir-scene --no-default-features 2>&1 | head -30`
+Run: `cd <detir checkout> && cargo build -p detir-scene --no-default-features 2>&1 | head -30`
 Expected: Compiles successfully (pub(crate) is strictly additive)
 
 **Step 4: Commit**
@@ -261,7 +261,7 @@ impl SceneRenderer {
 
 **Step 3: Build to verify**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/detir && cargo check -p detir-scene 2>&1 | head -30`
+Run: `cd <detir checkout> && cargo check -p detir-scene 2>&1 | head -30`
 
 Note: This will fail until Task 6 wires the module into lib.rs. For now, verify the file compiles conceptually. We'll do a full build in Task 6.
 
@@ -661,7 +661,7 @@ pub use embeddable::SceneRenderer;
 
 **Step 2: Build detir-scene**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/detir && cargo build -p detir-scene 2>&1 | head -50`
+Run: `cd <detir checkout> && cargo build -p detir-scene 2>&1 | head -50`
 
 Expected: May have compile errors from Tasks 2-5. Fix type mismatches, missing imports, wrong method signatures. The plan provides structural patterns — actual field names and method signatures must match the real code.
 
@@ -712,7 +712,7 @@ Also add `detir-platform` since we need `KeyCode`, `Modifiers`, etc. for input f
 
 **Step 2: Build to verify**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo check -p orus-shell 2>&1 | head -20`
+Run: `cd <orus-universal checkout> && cargo check -p orus-shell 2>&1 | head -20`
 Expected: Compiles (no code changes yet, just dependency added)
 
 **Step 3: Commit**
@@ -757,7 +757,7 @@ Make sure `AppContent` is accessible. In `orus-shell/src/lib.rs`, verify `pub mo
 
 **Step 3: Build**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo check -p orus-shell 2>&1 | head -20`
+Run: `cd <orus-universal checkout> && cargo check -p orus-shell 2>&1 | head -20`
 
 **Step 4: Commit**
 
@@ -916,13 +916,13 @@ git commit -m "feat(orus-macos): forward input events to SceneRenderer"
 
 **Step 1: Full workspace build**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo build -p orus-macos 2>&1 | tail -20`
+Run: `cd <orus-universal checkout> && cargo build -p orus-macos 2>&1 | tail -20`
 
 Expected: Compiles successfully.
 
 **Step 2: Run and visual verify**
 
-Run: `cd /Users/yppartha/PROJECTS/DETIR_WAID/kilneos-universal && cargo run -p orus-macos`
+Run: `cd <orus-universal checkout> && cargo run -p orus-macos`
 
 Expected:
 - Orus OS shell bar at top (existing, unchanged)

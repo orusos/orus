@@ -800,7 +800,7 @@ Reuses (path dependencies, NOT copies):
 
 ## Dev Box (ORUS/) Reuse
 
-From the separate Dev Box repository at `/Users/yppartha/PROJECTS/ORUS/`:
+From the separate Dev Box repository at `<dev box repo>`:
 
 **Port algorithms (not crate deps):**
 
