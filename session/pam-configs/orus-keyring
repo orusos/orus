@@ -1,0 +1,9 @@
+Name: Orus OS keyring unlock
+Default: yes
+Priority: -1
+Auth-Type: Additional
+Auth:
+	optional	pam_gnome_keyring.so
+Session-Type: Additional
+Session:
+	optional	pam_gnome_keyring.so auto_start

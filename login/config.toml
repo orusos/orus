@@ -1,0 +1,9 @@
+# greetd runs the graphical login (orus-greeter inside labwc) on VT 1 and starts
+# the Orus OS session for the user who logs in.
+[terminal]
+vt = 1
+
+# virtio-gpu draws the hardware cursor upside down under QEMU/UTM.
+[default_session]
+command = "sh -c 'test -d /sys/module/virtio_gpu && export WLR_NO_HARDWARE_CURSORS=1; exec labwc -C /usr/share/orus/login -S orus-greeter'"
+user = "_greetd"

@@ -1,0 +1,6 @@
+# Orus OS server edition: a headless Debian base. No shell, runtime or apps.
+openssh-server
+sudo
+network-manager
+curl
+ca-certificates

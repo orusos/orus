@@ -1,0 +1,15 @@
+[package]
+name = "orus-filemanager"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+orus-core = { workspace = true }
+libc = "0.2"
+jag-draw = { workspace = true }
+jag-surface = { workspace = true }
+log = { workspace = true }
+chrono = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

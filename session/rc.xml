@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<labwc_config>
+  <theme>
+    <name>orus</name>
+    <cornerRadius>14</cornerRadius>
+    <dropShadows>yes</dropShadows>
+    <font place="ActiveWindow"><size>11</size><weight>bold</weight></font>
+    <font place="InactiveWindow"><size>11</size><weight>bold</weight></font>
+    <font place="OnScreenDisplay"><size>11</size></font>
+    <!-- The left slot keeps the title at the concept's inset. labwc is built without window
+         icons (Orus OS windows set no app id), so it is a menu button drawn empty. -->
+    <titlebar>
+      <layout>menu:iconify,max,close</layout>
+    </titlebar>
+  </theme>
+  <!-- Defining keybinds turns labwc's defaults off, so the ones the session keeps are
+       listed here. Super+Space opens the launcher: the panel process owns it,
+       and this asks the running panel to toggle it (orus-linux, toggle-launcher). -->
+  <keyboard>
+    <keybind key="A-Tab"><action name="NextWindow"/></keybind>
+    <keybind key="A-S-Tab"><action name="PreviousWindow"/></keybind>
+    <keybind key="A-F4"><action name="Close"/></keybind>
+    <keybind key="W-space">
+      <action name="Execute"><command>orus-linux --toggle-launcher</command></action>
+    </keybind>
+  </keyboard>
+  <!-- Alt+Tab: a row of window thumbnails with their titles. -->
+  <windowSwitcher preview="yes" outlines="yes">
+    <osd show="yes" style="thumbnail" output="focused"/>
+  </windowSwitcher>
+  <windowRules>
+    <!-- The shell is the desktop: maximized, at the bottom of the stack, and not an
+         Alt+Tab entry. Apps are windows of their own above it. -->
+    <windowRule title="Orus OS Universal">
+      <action name="Maximize"/>
+      <action name="ToggleAlwaysOnBottom"/>
+    </windowRule>
+    <windowRule title="Orus OS Universal" serverDecoration="no" skipWindowSwitcher="yes" skipTaskbar="yes"/>
+    <!-- Chromium draws its own title bar. -->
+    <windowRule identifier="chromium" serverDecoration="no"/>
+  </windowRules>
+</labwc_config>

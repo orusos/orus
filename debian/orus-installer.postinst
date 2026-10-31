@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = configure ] && command -v systemctl >/dev/null 2>&1; then
+    systemctl enable orus-live-greetd.service
+fi
+
+# Orus OS wording for the welcome page: a patched copy of Calamares' welcome module.
+# If it cannot be made (a different Calamares), the installer shows Calamares' own text.
+if [ "$1" = configure ]; then
+    welcome=$(ls -d /usr/lib/*/calamares/modules/welcome 2>/dev/null | head -n 1 || true)
+    rm -rf /usr/share/orus/installer/modules/welcome
+    if [ -n "$welcome" ] && ! perl /usr/lib/orus/orus-brand-welcome "$welcome" /usr/share/orus/installer/modules/welcome; then
+        rm -rf /usr/share/orus/installer/modules/welcome
+        echo "orus-installer: the welcome page keeps Calamares' wording" >&2
+    fi
+fi
+
+#DEBHELPER#

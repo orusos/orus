@@ -1,0 +1,11 @@
+installer/orus-install usr/bin/
+installer/settings.conf usr/share/orus/installer/
+installer/modules usr/share/orus/installer/
+installer/branding usr/share/orus/installer/
+installer/live/live.toml etc/greetd/
+installer/live/live-try.toml etc/greetd/
+installer/live/live-greetd usr/lib/orus/
+installer/live/orus-live-greetd.service usr/lib/systemd/system/
+installer/live/greetd-not-live.conf etc/systemd/system/greetd.service.d/
+installer/live/session/rc.xml usr/share/orus/installer-session/
+installer/orus-brand-welcome usr/lib/orus/

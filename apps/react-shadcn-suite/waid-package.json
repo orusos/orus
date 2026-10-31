@@ -1,0 +1,43 @@
+{
+  "schema": "detir.waid.dev.package.v1",
+  "appId": "dev.detir.waid.react_shadcn_suite",
+  "name": "react-shadcn-suite",
+  "productName": "react-shadcn-suite",
+  "version": "1.0.0",
+  "platform": "desktop",
+  "capabilities": [
+    "media.audio.playback",
+    "media.video.playback",
+    "media.camera.capture",
+    "media.microphone.capture"
+  ],
+  "mediaCapabilities": {
+    "audioPlayback": true,
+    "videoPlayback": true,
+    "cameraCapture": true,
+    "microphoneCapture": true,
+    "cameraUsageDescription": "Allow the shadcn suite to validate camera capture through Detir.",
+    "microphoneUsageDescription": "Allow the shadcn suite to validate microphone capture through Detir."
+  },
+  "hostCapabilities": {
+    "actions": false,
+    "broker": false,
+    "env": false,
+    "intent": false,
+    "push": false,
+    "vault": false,
+    "fs": false,
+    "path": false,
+    "process": false,
+    "shell": false,
+    "events": false,
+    "auth": false,
+    "mcp": false,
+    "consent": false
+  },
+  "fsRoots": [],
+  "env": {},
+  "sharedAuthCustody": false,
+  "appUniversalName": "react-shadcn-suite",
+  "nativeUrlScheme": "dev.waid.reactshadcnsuite"
+}

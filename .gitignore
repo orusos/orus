@@ -1,0 +1,4 @@
+out/
+/src/
+/shell/target/
+/scripts/upload-runtime.sh

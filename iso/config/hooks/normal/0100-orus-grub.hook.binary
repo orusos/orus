@@ -1,0 +1,36 @@
+#!/bin/sh
+# Live ISO: a short boot menu (Install or Try), no Debian name and no boot chime.
+# live-build runs binary hooks inside the binary/ directory.
+set -e
+
+# The menu entries and the theme name the system, not Debian.
+for f in boot/grub/*.cfg boot/grub/*/*.cfg; do
+    [ -f "$f" ] || continue
+    sed -i 's/Debian GNU\/Linux/Orus OS/g; s/Debian/Orus OS/g' "$f"
+done
+
+# The menu's picture and colors. live-build writes Debian's splash after its includes
+# step, so the Orus OS ones are kept in boot/orus-grub and moved over it here.
+cp boot/orus-grub/splash.png boot/grub/splash.png
+cp boot/orus-grub/theme.txt boot/grub/live-theme/theme.txt
+rm -rf boot/orus-grub
+
+# Debian's GRUB plays a tune at boot.
+sed -i '/^insmod play$/d; /^play /d' boot/grub/config.cfg
+
+# Two entries in place of Debian's "Live system": the kernel line of the normal entry,
+# with orus.mode=install (the installer opens at once) or orus.mode=live (the login
+# screen, to try the system; the installer is in the launcher). orus-live-greetd reads it.
+linux=$(grep -m1 -P '^\tlinux\t.* quiet ' boot/grub/grub.cfg)
+initrd=$(grep -m1 -P '^\tinitrd\t' boot/grub/grub.cfg)
+if [ -z "$linux" ] || [ -z "$initrd" ]; then
+    echo "0100-orus-grub: no live entry to build the boot menu from" >&2
+    exit 1
+fi
+ENTRIES=$(printf 'menuentry "Install Orus OS" --hotkey=i {\n%s orus.mode=install\n%s\n}\nmenuentry "Try Orus OS (live session)" --hotkey=t {\n%s orus.mode=live\n%s\n}\n' "$linux" "$initrd" "$linux" "$initrd") \
+    perl -0pi -e 's/menuentry "[^"]*" --hotkey=l \{.*?\n\}\n/$ENV{ENTRIES}\n/s' boot/grub/grub.cfg
+grep -q 'orus.mode=install' boot/grub/grub.cfg
+sed -i 's/Live system ([^)]* fail-safe mode)/Orus OS (fail-safe mode)/' boot/grub/grub.cfg
+
+# The menu waits five seconds, then starts the first entry (Install).
+printf 'set timeout=5\nset timeout_style=menu\n' >> boot/grub/grub.cfg

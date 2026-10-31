@@ -1,0 +1,9 @@
+#!/bin/sh
+# Start greetd for the live media with the session the boot menu chose: the installer
+# for orus.mode=install, otherwise the login screen.
+if grep -qw 'orus.mode=install' /proc/cmdline; then
+    config=/etc/greetd/live.toml
+else
+    config=/etc/greetd/live-try.toml
+fi
+exec greetd --config "$config"

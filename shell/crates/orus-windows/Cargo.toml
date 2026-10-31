@@ -1,0 +1,10 @@
+[package]
+name = "orus-windows"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+winit = { workspace = true }
+orus-shell = { workspace = true }
+env_logger = { workspace = true }
+anyhow = { workspace = true }

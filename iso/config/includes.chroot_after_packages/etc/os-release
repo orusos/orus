@@ -1,0 +1,6 @@
+PRETTY_NAME="Orus OS"
+NAME="Orus OS"
+ID=debian
+ID_LIKE=debian
+VERSION_ID="13"
+VERSION_CODENAME=trixie

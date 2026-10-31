@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/* Colors sampled from the Orus OS desktop concepts (dark and light). The accent and
+   selection colors are set at runtime from `orus-appearance get`. */
+:root {
+  --bg: #1a1f24;
+  --side: #1b2126;
+  --line: #292f34;
+  --card: #20272b;
+  --card-line: #2a3236;
+  --text: #e6ebee;
+  --dim: #9aa5ab;
+  --on-accent: #0f1d1c;
+  --accent: #63b1ac;
+  --sel: #2e4849;
+  --toggle-track: #262e33;
+  --toggle-edge: #38424a;
+  --toggle-knob: #b3bbc4;
+  --fill-soft: #ffffff0d;
+  --fill: #ffffff1a;
+  --fill-strong: #ffffff26;
+}
+
+:root[data-theme="light"] {
+  --bg: #fdfdfe;
+  --side: #f7f9fa;
+  --line: #e9edf1;
+  --card: #f8fafb;
+  --card-line: #dcdfe5;
+  --text: #1c2227;
+  --dim: #5d6870;
+  --on-accent: #ffffff;
+  --toggle-track: #cfd3d8;
+  --toggle-edge: #a9afb8;
+  --toggle-knob: #ffffff;
+  --fill-soft: #0000000a;
+  --fill: #00000012;
+  --fill-strong: #0000001c;
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", sans-serif;
+  --color-bg: var(--bg);
+  --color-side: var(--side);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-card-line: var(--card-line);
+  --color-text: var(--text);
+  --color-dim: var(--dim);
+  --color-on-accent: var(--on-accent);
+  --color-accent: var(--accent);
+  --color-sel: var(--sel);
+  --color-fill-soft: var(--fill-soft);
+  --color-fill: var(--fill);
+  --color-fill-strong: var(--fill-strong);
+  --color-warn: #e5534b;
+}
+
+:root[data-reduce-motion="true"] *,
+:root[data-reduce-motion="true"] *::before,
+:root[data-reduce-motion="true"] *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

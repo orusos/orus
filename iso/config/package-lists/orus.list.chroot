@@ -1,0 +1,21 @@
+# Installed beside detir-shell and waid-runtime (config/packages.chroot).
+# Their dependencies pull in labwc, chromium, gnome-keyring, fonts and Mesa.
+sudo
+# Wired and Wi-Fi connections (nmcli, nmtui); nothing else configures the network.
+network-manager
+# ifconfig, netstat and route: Debian 13 no longer installs them by default, and people reach for them.
+net-tools
+# arecord, aplay, alsamixer and amixer, for checking sound and microphone hardware.
+alsa-utils
+# Scripts the installer's language list shows (Indic, Thai, Japanese, Korean, Chinese);
+# without them those names draw as boxes. detir-shell's `fonts-noto-core | fonts-dejavu-core`
+# is met by DejaVu alone, so the Noto fonts are named here.
+fonts-noto-core
+fonts-noto-cjk
+# The Terminal draws a fixed-width font and looks it up by name; DejaVu Sans Mono is one the
+# text engine knows. Without it the Terminal falls back to a proportional font and its prompt,
+# cursor and typed text drift apart. The Noto fonts above are not enough.
+fonts-dejavu-core
+# Remote login to an installed system, for development and support. It does not run on live
+# media (see etc/systemd/system/ssh.service.d), where the login password is public.
+openssh-server

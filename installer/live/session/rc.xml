@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- Live installer session: Calamares fills the screen. There is no taskbar here,
+     so the window has only a close button (a minimized window could not be brought
+     back), and Alt+Tab is kept to switch back to it if it is ever hidden. -->
+<labwc_config>
+  <theme>
+    <name>orus</name>
+    <cornerRadius>14</cornerRadius>
+    <dropShadows>yes</dropShadows>
+    <font place="ActiveWindow"><size>11</size><weight>bold</weight></font>
+    <font place="InactiveWindow"><size>11</size><weight>bold</weight></font>
+    <font place="OnScreenDisplay"><size>11</size></font>
+    <titlebar>
+      <!-- The left slot is the empty menu button; it keeps the title off the window's
+         edge, and a click on it does nothing (see the WindowMenu binding below). -->
+      <layout>menu:close</layout>
+    </titlebar>
+  </theme>
+  <keyboard>
+    <keybind key="A-Tab">
+      <action name="NextWindow"/>
+    </keybind>
+  </keyboard>
+  <!-- Alt+Tab: a row of window thumbnails with their titles. -->
+  <windowSwitcher preview="yes" outlines="yes">
+    <osd show="yes" style="thumbnail" output="focused"/>
+  </windowSwitcher>
+  <!-- labwc loads its default mouse bindings (a root menu that can launch a
+       terminal) when none are defined, so one that does nothing is defined. -->
+  <mouse>
+    <context name="WindowMenu">
+      <mousebind button="Left" action="Press">
+        <action name="None"/>
+      </mousebind>
+    </context>
+    <context name="Root">
+      <mousebind button="Left" action="Press">
+        <action name="None"/>
+      </mousebind>
+    </context>
+  </mouse>
+  <windowRules>
+    <windowRule identifier="calamares">
+      <action name="Maximize"/>
+    </windowRule>
+  </windowRules>
+</labwc_config>

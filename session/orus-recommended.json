@@ -1,0 +1,11 @@
+{
+  "BookmarkBarEnabled": false,
+  "ShowHomeButton": false,
+  "HomepageIsNewTabPage": true,
+  "NewTabPageLocation": "about:blank",
+  "RestoreOnStartup": 5,
+  "DefaultSearchProviderEnabled": true,
+  "DefaultSearchProviderName": "Perplexity",
+  "DefaultSearchProviderKeyword": "perplexity",
+  "DefaultSearchProviderSearchURL": "https://www.perplexity.ai/search?q={searchTerms}"
+}

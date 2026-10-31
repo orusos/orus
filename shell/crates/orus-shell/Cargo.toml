@@ -1,0 +1,26 @@
+[package]
+name = "orus-shell"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+jag-draw = { workspace = true }
+jag-surface = { workspace = true }
+orus-terminal = { workspace = true }
+orus-textedit = { workspace = true }
+orus-sandbox = { workspace = true }
+orus-core = { workspace = true }
+orus-filemanager = { workspace = true }
+orus-viewer = { workspace = true }
+winit = { workspace = true }
+wgpu = { workspace = true }
+pollster = { workspace = true }
+chrono = { workspace = true }
+log = { workspace = true }
+anyhow = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+rfd = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

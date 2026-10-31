@@ -1,0 +1,89 @@
+Source: orus
+Section: x11
+Priority: optional
+Maintainer: Orus OS <partha.yp@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: waid-runtime
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ libwayland-client0,
+ libwayland-egl1,
+ libxkbcommon0,
+ libegl1,
+ libvulkan1,
+ libgl1-mesa-dri,
+ mesa-vulkan-drivers,
+ gstreamer1.0-plugins-base,
+ gstreamer1.0-plugins-good,
+ gstreamer1.0-libav,
+ gstreamer1.0-pulseaudio,
+ gstreamer1.0-pipewire,
+ pipewire-audio,
+ fonts-noto-core | fonts-dejavu-core
+Description: Detir runtime for waid web apps
+ One shared runtime that opens a built web app (index.html plus
+ waid-package.json) in its own window. Apps are plain web bundles; they do
+ not embed the runtime. Video, audio, camera and microphone go through GStreamer and the
+ system's PipeWire server.
+
+Package: detir-shell
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ waid-runtime (= ${binary:Version}),
+ libwayland-client0,
+ libxkbcommon0,
+ libegl1,
+ labwc (>= 0.9),
+ chromium,
+ gnome-keyring,
+ libpam-gnome-keyring,
+ bluez,
+ cups,
+ cups-browsed,
+ avahi-daemon,
+ ipp-usb,
+ wlr-randr,
+ wireplumber,
+ xdg-user-dirs,
+ dbus-user-session,
+ fonts-noto-core | fonts-dejavu-core,
+ fonts-dejavu-core
+Description: Orus OS shell and Wayland session
+ The Orus OS shell (launcher, shell bar, built-in terminal, files, text and
+ image apps), the labwc session that hosts it, the orus installer for
+ web apps, and System Settings. Registers a Wayland session and unlocks the
+ login keyring at console login.
+
+Package: orus-installer
+Architecture: all
+Depends: ${misc:Depends},
+ calamares,
+ calamares-settings-debian,
+ orus-login,
+ waid-runtime,
+ sudo
+Description: Orus OS graphical installer
+ The Calamares installer for Orus OS live media: the installation sequence,
+ the runtime license acceptance step, and Orus OS branding. It removes
+ itself from the installed system.
+
+Package: orus-login
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ detir-shell,
+ greetd,
+ labwc (>= 0.9),
+ libwayland-client0,
+ libxkbcommon0,
+ libegl1,
+ libvulkan1,
+ mesa-vulkan-drivers,
+ fonts-noto-core | fonts-dejavu-core
+Description: Orus OS graphical login
+ A greetd login screen drawn with the Orus OS shell's renderer, running in
+ labwc, that starts the Orus OS session. The password typed here goes through
+ PAM, so the login keyring unlocks as it does at the console. Install it only
+ on machines that should boot to the Orus OS login.

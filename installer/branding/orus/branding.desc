@@ -1,0 +1,33 @@
+---
+componentName:   orus
+welcomeStyleCalamares: false
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 800px,580px
+windowPlacement: center
+strings:
+    productName:         Orus OS
+    shortProductName:    Orus OS
+    version:             0.1
+    shortVersion:        0.1
+    versionedName:       Orus OS
+    shortVersionedName:  Orus OS
+    bootloaderEntryName: Orus OS
+    productUrl:          https://github.com/orusos
+    supportUrl:          https://github.com/orusos
+    knownIssuesUrl:      https://github.com/orusos
+    releaseNotesUrl:     https://github.com/orusos
+    donateUrl:           https://github.com/orusos
+sidebar: qml
+navigation: widget
+images:
+    productLogo:         "logo.png"
+    productIcon:         "logo.png"
+    productWelcome:      "welcome.png"
+slideshow:               "show.qml"
+style:
+   SidebarBackground:        "#1b2226"
+   SidebarText:              "#e6ebee"
+   SidebarTextCurrent:       "#ffffff"
+   SidebarBackgroundCurrent: "#2f494a"
+slideshowAPI: 2

@@ -1,0 +1,14 @@
+[package]
+name = "orus-appearance"
+edition.workspace = true
+version.workspace = true
+description = "Read and change the Orus OS appearance setting"
+
+[[bin]]
+name = "orus-appearance"
+path = "src/main.rs"
+
+[dependencies]
+orus-core = { path = "../orus-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }

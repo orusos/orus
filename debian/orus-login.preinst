@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+# greetd owns /etc/greetd/config.toml; divert it so this package can ship its own.
+if [ "$1" = install ] || [ "$1" = upgrade ]; then
+    dpkg-divert --package orus-login --add --rename \
+        --divert /etc/greetd/config.toml.distrib /etc/greetd/config.toml
+fi
+
+#DEBHELPER#

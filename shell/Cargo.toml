@@ -1,0 +1,60 @@
+[workspace]
+members = [
+    "crates/orus",
+    "crates/orus-appearance",
+    "crates/orus-greeter",
+    "crates/orus-core",
+    "crates/orus-linux",
+    "crates/orus-panel",
+    "crates/orus-macos",
+    "crates/orus-sandbox",
+    "crates/orus-shell",
+    "crates/orus-windows",
+    "crates/system-apps/orus-filemanager",
+    "crates/system-apps/orus-viewer",
+    "crates/system-apps/orus-terminal",
+    "crates/system-apps/orus-textedit",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+# GPU
+wgpu = "0.19"
+pollster = "0.3"
+raw-window-handle = "0.6"
+objc2 = "0.5"
+objc2-app-kit = { version = "0.2", features = ["NSView", "NSClipView", "NSScrollView", "NSResponder"] }
+objc2-foundation = "0.2"
+winit = "0.30"
+# Utility
+log = "0.4"
+env_logger = "0.11"
+anyhow = "1"
+thiserror = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+bytemuck = { version = "1.14", features = ["derive"] }
+chrono = "0.4"
+rfd = "0.15"
+
+# Jag crates (GPU renderer, canvas, text — published to crates.io)
+jag-draw = { git = "https://github.com/jag-rs/jag", branch = "dev" }
+jag-shaders = { git = "https://github.com/jag-rs/jag", branch = "dev" }
+jag-surface = { git = "https://github.com/jag-rs/jag", branch = "dev" }
+jag-text = { git = "https://github.com/jag-rs/jag", branch = "dev" }
+orus-terminal = { path = "crates/system-apps/orus-terminal" }
+orus-textedit = { path = "crates/system-apps/orus-textedit" }
+
+# Orus OS internal crates
+orus-sandbox = { path = "crates/orus-sandbox" }
+orus-shell = { path = "crates/orus-shell" }
+orus-panel = { path = "crates/orus-panel" }
+orus-core = { path = "crates/orus-core" }
+orus-filemanager = { path = "crates/system-apps/orus-filemanager" }
+orus-viewer = { path = "crates/system-apps/orus-viewer" }

@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = configure ]; then
+    # The greeter draws with the GPU, which needs the render and video groups.
+    usermod -aG video,render _greetd
+    # Where the greeter remembers the user who logged in last.
+    install -d -o _greetd -g _greetd -m 0755 /var/cache/orus-greeter
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl enable greetd.service
+    fi
+fi
+
+#DEBHELPER#

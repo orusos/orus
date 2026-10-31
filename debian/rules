@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+# The binaries come from cargo, not from a Debian build system.
+override_dh_auto_build:
+	scripts/build.sh
+	scripts/fetch-pdfium.sh
+	[ -f out/apps/orus-store/index.html ] || scripts/build-apps.sh orus-store
+	[ -f out/apps/system-settings/index.html ] || scripts/build-apps.sh
+	[ -f out/apps/react-shadcn-suite/index.html ] || scripts/build-apps.sh react-shadcn-suite
+
+override_dh_auto_install:
+	:
+
+override_dh_auto_test:
+	:
+
+# The installer reads the license from the file, so keep it uncompressed.
+override_dh_compress:
+	dh_compress -Xusr/share/doc/waid-runtime/LICENSE-waid-runtime-BSL-1.1.txt
+
+override_dh_auto_clean:
+	:

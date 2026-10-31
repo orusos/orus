@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- Login screen compositor: the greeter is fullscreen, and there are no
+     keybindings or menus, so nothing can be launched before login. labwc loads its
+     default bindings when none are defined, so one binding that does nothing is
+     defined for each of keyboard and mouse. -->
+<labwc_config>
+  <keyboard>
+    <keybind key="W-F24">
+      <action name="None"/>
+    </keybind>
+  </keyboard>
+  <mouse>
+    <context name="Root">
+      <mousebind button="Left" action="Press">
+        <action name="None"/>
+      </mousebind>
+    </context>
+  </mouse>
+</labwc_config>

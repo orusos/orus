@@ -1,0 +1,22 @@
+[package]
+name = "orus-panel"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+orus-shell = { workspace = true }
+orus-core = { workspace = true }
+jag-draw = { workspace = true }
+jag-surface = { workspace = true }
+wgpu = { workspace = true }
+pollster = { workspace = true }
+raw-window-handle = { workspace = true }
+log = { workspace = true }
+anyhow = { workspace = true }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+smithay-client-toolkit = "0.19"
+wayland-client = "0.31"
+wayland-backend = { version = "0.3", features = ["client_system"] }
+wayland-protocols = { version = "0.32", features = ["client", "staging"] }
+wayland-protocols-wlr = { version = "0.3", features = ["client"] }

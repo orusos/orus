@@ -1,0 +1,12 @@
+# Live media: log in as the live user and open the installer. When the
+# installer is closed, the greeter appears, so the live system can still be tried.
+[terminal]
+vt = 1
+
+[default_session]
+command = "sh -c 'test -d /sys/module/virtio_gpu && export WLR_NO_HARDWARE_CURSORS=1; exec labwc -C /usr/share/orus/login -S orus-greeter'"
+user = "_greetd"
+
+[initial_session]
+command = "sh -c 'test -d /sys/module/virtio_gpu && export WLR_NO_HARDWARE_CURSORS=1; export XDG_DATA_DIRS=/usr/share/orus/session/share:/usr/local/share:/usr/share; exec labwc -C /usr/share/orus/installer-session -S orus-install'"
+user = "user"

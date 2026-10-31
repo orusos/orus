@@ -1,0 +1,11 @@
+#!/bin/sh
+# Server ISO: the boot menu names the system Orus OS, not Debian, and has no boot chime.
+# live-build runs binary hooks inside the binary/ directory.
+set -e
+
+for f in boot/grub/*.cfg boot/grub/*/*.cfg; do
+    [ -f "$f" ] || continue
+    sed -i 's/Debian GNU\/Linux/Orus OS Server/g; s/Debian/Orus OS/g' "$f"
+done
+
+sed -i '/^insmod play$/d; /^play /d' boot/grub/config.cfg

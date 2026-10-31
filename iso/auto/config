@@ -1,0 +1,35 @@
+#!/bin/sh
+# live-build configuration for the Orus OS live ISO.
+#
+# noautologin: the console login must take a password, because that login is
+# what unlocks the keyring (pam_gnome_keyring).
+set -e
+
+# EDITION=desktop (default) or server (headless: no shell, runtime, apps or Calamares;
+# the Debian installer installs it).
+edition=${EDITION:-desktop}
+case "$edition" in
+    desktop) installer=none; appendlive="boot=live components noautologin quiet loglevel=3" ;;
+    server) installer=live; appendlive="boot=live components quiet loglevel=3" ;;
+    *) echo "EDITION must be desktop or server, got '$edition'" >&2; exit 1 ;;
+esac
+
+# ARCH=arm64 (default) or amd64. amd64 also boots BIOS machines.
+arch=${ARCH:-arm64}
+case "$arch" in
+    arm64) bootloaders=grub-efi ;;
+    amd64) bootloaders=grub-efi,grub-pc ;;
+    *) echo "ARCH must be arm64 or amd64, got '$arch'" >&2; exit 1 ;;
+esac
+
+lb config noauto \
+    --distribution trixie \
+    --architectures "$arch" \
+    --binary-images iso-hybrid \
+    --bootloaders "$bootloaders" \
+    --debian-installer "$installer" \
+    --archive-areas "main contrib non-free-firmware" \
+    --iso-application Orus OS \
+    --iso-volume ORUS \
+    --bootappend-live "$appendlive" \
+    "${@}"

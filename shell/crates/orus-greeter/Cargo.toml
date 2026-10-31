@@ -1,0 +1,22 @@
+[package]
+name = "orus-greeter"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+orus-core = { workspace = true }
+jag-draw = { workspace = true }
+jag-surface = { workspace = true }
+winit = { workspace = true }
+wgpu = { workspace = true }
+pollster = { workspace = true }
+chrono = { workspace = true }
+log = { workspace = true }
+env_logger = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

@@ -1,0 +1,10 @@
+{
+  "productName": "Store",
+  "appUniversalName": "orus-store",
+  "nativeUrlScheme": "dev.orus.store",
+  "capabilities": [
+    "host.shell"
+  ],
+  "version": "0.1.0",
+  "description": "Find, install and update apps."
+}

@@ -1,0 +1,198 @@
+/* The installer in the desktop's dark colors (orus-core palette, dark theme):
+ * surface #191f24, sidebar #1b2226, field #272d32, border #2c3338, text #e6ebee,
+ * dim text #9aa5ab, accent #63b1ac, selection #2f494a. */
+
+QWidget {
+    background-color: #191f24;
+    color: #e6ebee;
+    font-size: 14px;
+}
+
+QLabel {
+    background: transparent;
+}
+
+QToolTip {
+    background-color: #181e22;
+    color: #e6ebee;
+    border: 1px solid #30373b;
+}
+
+QPushButton {
+    background-color: #272d32;
+    border: 1px solid #2c3338;
+    border-radius: 10px;
+    padding: 7px 20px;
+    min-width: 70px;
+}
+QPushButton:hover,
+QPushButton:default,
+QPushButton:focus {
+    border-color: #63b1ac;
+}
+QPushButton:pressed {
+    background-color: #2f494a;
+}
+QPushButton {
+    outline: none;
+}
+QPushButton:disabled {
+    background-color: #1b2226;
+    border-color: #242b30;
+    color: #69757f;
+}
+
+QLineEdit,
+QTextEdit,
+QPlainTextEdit,
+QTextBrowser,
+QSpinBox {
+    background-color: #272d32;
+    border: 1px solid #2c3338;
+    border-radius: 8px;
+    padding: 6px 8px;
+    selection-background-color: #2f494a;
+    selection-color: #ffffff;
+}
+QLineEdit:focus,
+QTextEdit:focus,
+QPlainTextEdit:focus,
+QSpinBox:focus {
+    border-color: #63b1ac;
+}
+QLineEdit:disabled {
+    color: #69757f;
+}
+
+QComboBox {
+    background-color: #272d32;
+    border: 1px solid #2c3338;
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+QComboBox:hover,
+QComboBox:focus {
+    border-color: #63b1ac;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 28px;
+}
+QComboBox QAbstractItemView {
+    background-color: #1b2226;
+    border: 1px solid #2c3338;
+    selection-background-color: #2f494a;
+    selection-color: #ffffff;
+    outline: 0;
+}
+
+QCheckBox,
+QRadioButton {
+    background: transparent;
+    spacing: 8px;
+}
+QCheckBox::indicator,
+QRadioButton::indicator {
+    width: 18px;
+    height: 18px;
+    background-color: #272d32;
+    border: 1px solid #3a444a;
+}
+QCheckBox::indicator {
+    border-radius: 5px;
+}
+QRadioButton::indicator {
+    border-radius: 10px;
+}
+QCheckBox::indicator:checked,
+QRadioButton::indicator:checked {
+    background-color: #63b1ac;
+    border-color: #63b1ac;
+}
+/* The marks are files in the installed branding folder; a stylesheet cannot name
+ * its own folder. */
+QCheckBox::indicator:checked {
+    image: url(/usr/share/orus/installer/branding/orus/check.png);
+}
+QRadioButton::indicator:checked {
+    image: url(/usr/share/orus/installer/branding/orus/radio-dot.png);
+}
+
+QListView,
+QTreeView,
+QTableView,
+QAbstractItemView {
+    background-color: #1b2226;
+    alternate-background-color: #1b2226;
+    border: 1px solid #2c3338;
+    border-radius: 8px;
+    selection-background-color: #2f494a;
+    selection-color: #ffffff;
+    outline: 0;
+}
+QHeaderView::section {
+    background-color: #1b2226;
+    color: #9aa5ab;
+    border: none;
+    padding: 6px;
+}
+
+QScrollArea {
+    border: none;
+}
+QScrollBar:vertical {
+    background: transparent;
+    width: 10px;
+}
+QScrollBar:horizontal {
+    background: transparent;
+    height: 10px;
+}
+QScrollBar::handle:vertical {
+    background-color: #3a444a;
+    border-radius: 5px;
+    min-height: 30px;
+}
+QScrollBar::handle:horizontal {
+    background-color: #3a444a;
+    border-radius: 5px;
+    min-width: 30px;
+}
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    width: 0;
+    height: 0;
+}
+
+QProgressBar {
+    background-color: #272d32;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+}
+QProgressBar::chunk {
+    background-color: #63b1ac;
+    border-radius: 6px;
+}
+
+QGroupBox {
+    border: 1px solid #2c3338;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+/* The drop-down list's frame and scroll arrows draw white without this. */
+QComboBoxPrivateContainer,
+QComboBoxPrivateScroller {
+    background-color: #1b2226;
+    border: 1px solid #2c3338;
+}
+
+/* The license page's accept box: Calamares gives it a pale red background until the
+ * box is ticked (an inline style this sheet cannot override), then no background. */
+#acceptFrame QCheckBox:!checked {
+    color: #1c2227;
+}
+#acceptFrame QCheckBox:checked {
+    color: #e6ebee;
+}

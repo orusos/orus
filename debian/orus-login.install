@@ -1,0 +1,4 @@
+out/bin/orus-greeter usr/bin/
+login/config.toml etc/greetd/
+login/labwc/* usr/share/orus/login/
+login/systemd/orus.conf etc/systemd/system/greetd.service.d/

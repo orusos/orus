@@ -1,0 +1,14 @@
+#!/bin/sh
+# Run Debian's Chromium on Wayland with its own title bar, buttons on the right. Chromium
+# takes the button order from this GNOME setting, whose default puts them on the left.
+# --no-first-run skips Debian's master_preferences: its Debian bookmarks and home page.
+# start-orus puts this directory ahead of /usr/bin on PATH.
+set -eu
+
+profile="$HOME/.orus/chromium"
+layout=":minimize,maximize,close"
+
+mkdir -p "$profile"
+[ "$(gsettings get org.gnome.desktop.wm.preferences button-layout)" = "'$layout'" ] ||
+    gsettings set org.gnome.desktop.wm.preferences button-layout "$layout" || true
+exec /usr/bin/chromium --ozone-platform=wayland --no-first-run --user-data-dir="$profile" "$@"

@@ -1,0 +1,20 @@
+#!/bin/sh
+# Run the Orus OS installer (Calamares) from the live session.
+#
+# Calamares needs root and talks to the session's Wayland socket, so it runs
+# under sudo with the session environment kept. The live user has passwordless
+# sudo.
+set -eu
+
+if [ ! -d /run/live/medium ]; then
+    echo "orus-install: this is not a live system" >&2
+    exit 1
+fi
+
+# live-build leaves an fstab that confuses partitioning; put it back after.
+if [ -f /etc/fstab ]; then
+    sudo mv /etc/fstab /etc/fstab.orig.calamares
+    trap 'sudo mv /etc/fstab.orig.calamares /etc/fstab' EXIT
+fi
+
+sudo -E env QT_QPA_PLATFORM=wayland calamares -c /usr/share/orus/installer

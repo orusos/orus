@@ -1,0 +1,21 @@
+#!/bin/sh
+# Start the Orus OS session: labwc with the shell as its session command.
+# The session ends when the shell exits.
+set -eu
+
+root=$(cd "$(dirname "$0")/.." && pwd)
+
+# virtio-gpu draws the hardware cursor upside down under QEMU/UTM. Other GPUs keep it: a software cursor redraws the screen on every pointer move.
+[ -d /sys/module/virtio_gpu ] && export WLR_NO_HARDWARE_CURSORS=1 || true
+# Find the orus window theme in session/share.
+export XDG_DATA_DIRS="$root/session/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+# orus (install, list, remove apps) next to the shell.
+export PATH="$root/out/bin:$PATH"
+# Chromium with the Orus OS profile and title-bar buttons on the right.
+export PATH="$root/session/bin:$PATH"
+# Wallpaper and icons the shell draws (installed systems read /usr/share/orus).
+export ORUS_ASSETS="$root/assets"
+# labwc runs on a per-user copy of the config so the theme can change at runtime.
+export ORUS_SESSION_DIR="$root/session"
+orus-appearance apply-session
+exec labwc -C "$HOME/.orus/labwc" -S "$root/out/bin/orus-linux"

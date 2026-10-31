@@ -1,0 +1,25 @@
+[package]
+name = "orus-terminal"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+orus-core = { workspace = true }
+anyhow = { workspace = true }
+wgpu = { workspace = true }
+winit = { workspace = true }
+pollster = { workspace = true }
+jag-draw = { workspace = true }
+jag-surface = { workspace = true }
+libc = "0.2"
+vte = "0.13"
+
+[lib]
+name = "orus_terminal"
+path = "src/lib.rs"
+
+[[bin]]
+name = "orus-terminal"
+path = "src/main.rs"
+
+[features]

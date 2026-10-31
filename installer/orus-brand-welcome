@@ -1,0 +1,48 @@
+#!/usr/bin/perl
+# Make a copy of Calamares' welcome module whose two texts say what Orus OS wants:
+# the heading "Welcome to Orus OS" and the line "Let's set up your computer."
+#
+# Calamares takes these texts from translations that always win over a branding
+# translation, so they cannot be changed from the branding folder. The texts are
+# plain strings in the module's library; each is replaced by a shorter one (padded
+# with zero bytes, so the file keeps its size). The copy is made on the machine where
+# the installer is installed, so no modified Calamares file is distributed.
+#
+# usage: orus-brand-welcome <installed welcome module dir> <output dir>
+use strict;
+use warnings;
+
+my ($from_dir, $to_dir) = @ARGV;
+die "usage: $0 FROM_DIR TO_DIR\n" unless defined $to_dir;
+
+my $lib = "libcalamares_viewmodule_welcome.so";
+my %swap = (
+    "<h1>Welcome to the %1 installer</h1>" => "<h1>Welcome to %1</h1>",
+    "This program will ask you some questions and set up %2 on your computer."
+        => "Let\xe2\x80\x99s set up your computer.",
+);
+
+open(my $in, "<:raw", "$from_dir/$lib") or die "cannot read $from_dir/$lib: $!\n";
+local $/;
+my $data = <$in>;
+close $in;
+
+for my $from (sort keys %swap) {
+    my $to = $swap{$from};
+    my $pos = index($data, "$from\0");
+    die "text not found in $lib (a different Calamares version?): $from\n" if $pos < 0;
+    substr($data, $pos, length($from) + 1) = $to . ("\0" x (length($from) - length($to) + 1));
+}
+
+mkdir $to_dir unless -d $to_dir;
+open(my $out, ">:raw", "$to_dir/$lib") or die "cannot write $to_dir/$lib: $!\n";
+print $out $data;
+close $out or die "cannot write $to_dir/$lib: $!\n";
+chmod 0755, "$to_dir/$lib";
+
+open(my $desc_in, "<", "$from_dir/module.desc") or die "cannot read module.desc: $!\n";
+my $desc = <$desc_in>;
+close $desc_in;
+open(my $desc_out, ">", "$to_dir/module.desc") or die "cannot write module.desc: $!\n";
+print $desc_out $desc;
+close $desc_out;

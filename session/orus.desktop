@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Orus OS
+Comment=Orus OS shell on labwc
+Exec=orus-session
+Type=Application
+DesktopNames=Orus OS

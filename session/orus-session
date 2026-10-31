@@ -1,0 +1,39 @@
+#!/bin/sh
+# Start the Orus OS session: labwc with the shell as its session command.
+# The session ends when the shell exits. Works from a console login or as the
+# Exec of a display manager's Wayland session.
+set -eu
+
+share=$(cd "$(dirname "$0")/../share/orus" && pwd)
+
+# virtio-gpu draws the hardware cursor upside down under QEMU/UTM. Other GPUs keep it: a software cursor redraws the screen on every pointer move.
+[ -d /sys/module/virtio_gpu ] && export WLR_NO_HARDWARE_CURSORS=1 || true
+# The orus window theme.
+export XDG_DATA_DIRS="$share/session/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+# Chromium with the Orus OS profile and title-bar buttons on the right.
+export PATH="$share/session/bin:$PATH"
+# Debian leaves the sbin folders off a normal user's PATH; ifconfig, ip and iw live there.
+export PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
+
+# A display manager discards the session's output; keep it for diagnosing a login that ends early.
+mkdir -p "$HOME/.orus"
+exec >"$HOME/.orus/session.log" 2>&1
+
+# Create Documents, Downloads and Pictures, which Files lists in its sidebar.
+xdg-user-dirs-update 2>/dev/null || true
+
+# Install the apps the system ships for this user.
+for app in "$share"/apps/*/; do
+    [ -d "$app" ] && orus install --yes "$app"
+done
+
+# labwc runs on a per-user copy of the config so the theme can change at runtime.
+export ORUS_SESSION_DIR="$share/session"
+if orus-appearance apply-session; then
+    config="$HOME/.orus/labwc"
+else
+    echo "orus-session: could not write the user labwc config; using the system one" >&2
+    config="$share/session"
+fi
+
+exec labwc -C "$config" -S orus-linux

@@ -1,0 +1,15 @@
+[package]
+name = "orus-viewer"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+hayro = "0.8"
+image = { version = "0.25", default-features = false, features = ["png"] }
+jag-draw = { workspace = true }
+jag-surface = { workspace = true }
+log = { workspace = true }
+pdfium-render = "0.9"
+
+[dev-dependencies]
+tempfile = "3"

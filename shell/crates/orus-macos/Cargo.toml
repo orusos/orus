@@ -1,0 +1,15 @@
+[package]
+name = "orus-macos"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+winit = { workspace = true }
+orus-shell = { workspace = true }
+orus-sandbox = { workspace = true }
+env_logger = { workspace = true }
+anyhow = { workspace = true }
+raw-window-handle = { workspace = true }
+objc2 = { workspace = true }
+objc2-app-kit = { workspace = true }
+objc2-foundation = { workspace = true }

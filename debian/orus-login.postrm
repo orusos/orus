@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = remove ] || [ "$1" = purge ]; then
+    dpkg-divert --package orus-login --remove --rename \
+        --divert /etc/greetd/config.toml.distrib /etc/greetd/config.toml
+fi
+
+#DEBHELPER#

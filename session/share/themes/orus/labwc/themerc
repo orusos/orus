@@ -1,0 +1,39 @@
+# Orus OS window chrome: matches the shell's own windows
+# (orus-shell/src/app_window.rs) and the colors in orus-shell/src/palette.rs.
+border.width: 1
+window.active.border.color: #2c3338
+window.inactive.border.color: #2c3338
+
+window.titlebar.padding.width: 3
+window.titlebar.padding.height: 0
+window.button.width: 50
+window.button.height: 48
+window.button.spacing: 0
+window.button.hover.bg.corner-radius: 8
+
+window.active.title.bg.color: #1c2427
+window.inactive.title.bg.color: #161c1f
+window.active.label.text.color: #e6ebee
+window.inactive.label.text.color: #9aa5ab
+window.label.text.justify: Left
+
+window.active.shadow.size: 32
+window.active.shadow.color: #00000066
+window.inactive.shadow.size: 16
+window.inactive.shadow.color: #00000040
+
+# Alt+Tab thumbnails: the dock's colors, the selected window on the selection color
+# with an accent outline.
+osd.bg.color: #181e22
+osd.border.color: #30373b
+osd.border.width: 1
+osd.label.text.color: #e6ebee
+osd.window-switcher.style-thumbnail.padding: 10
+osd.window-switcher.style-thumbnail.item.width: 240
+osd.window-switcher.style-thumbnail.item.height: 190
+osd.window-switcher.style-thumbnail.item.padding: 8
+osd.window-switcher.style-thumbnail.item.active.bg.color: #2e4849
+osd.window-switcher.style-thumbnail.item.active.border.color: #63b1ac
+osd.window-switcher.style-thumbnail.item.active.border.width: 2
+osd.window-switcher.preview.border.width: 2
+osd.window-switcher.preview.border.color: #63b1ac

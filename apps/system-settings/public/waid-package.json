@@ -1,0 +1,8 @@
+{
+  "productName": "Settings",
+  "appUniversalName": "orus-system-settings",
+  "nativeUrlScheme": "dev.orus.system-settings",
+  "capabilities": [
+    "host.shell"
+  ]
+}
