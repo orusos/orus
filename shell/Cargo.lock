@@ -2188,219 +2188,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2db585e1d738fc771bf08a151420d3ed193d9d895a36df7f6f8a9456b911ddc"
 
 [[package]]
-name = "orus"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "base64",
- "ed25519-dalek",
- "orus-core",
- "rand_core 0.6.4",
- "serde",
- "serde_json",
- "sha2",
- "tempfile",
- "tiny_http",
- "toml",
- "ureq",
- "url",
- "zip",
-]
-
-[[package]]
-name = "orus-appearance"
-version = "0.1.0"
-dependencies = [
- "orus-core",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "orus-core"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "log",
- "serde",
- "serde_json",
- "tempfile",
- "thiserror 1.0.69",
-]
-
-[[package]]
-name = "orus-filemanager"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "jag-draw",
- "jag-surface",
- "orus-core",
- "libc",
- "log",
- "tempfile",
-]
-
-[[package]]
-name = "orus-greeter"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "chrono",
- "env_logger",
- "jag-draw",
- "jag-surface",
- "orus-core",
- "log",
- "pollster 0.3.0",
- "serde",
- "serde_json",
- "tempfile",
- "thiserror 1.0.69",
- "wgpu",
- "winit",
-]
-
-[[package]]
-name = "orus-linux"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "env_logger",
- "orus-panel",
- "orus-shell",
- "winit",
-]
-
-[[package]]
-name = "orus-macos"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "env_logger",
- "orus-sandbox",
- "orus-shell",
- "objc2 0.5.2",
- "objc2-app-kit 0.2.2",
- "objc2-foundation 0.2.2",
- "raw-window-handle",
- "winit",
-]
-
-[[package]]
-name = "orus-panel"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "jag-draw",
- "jag-surface",
- "orus-core",
- "orus-shell",
- "log",
- "pollster 0.3.0",
- "raw-window-handle",
- "smithay-client-toolkit",
- "wayland-backend",
- "wayland-client",
- "wayland-protocols",
- "wayland-protocols-wlr",
- "wgpu",
-]
-
-[[package]]
-name = "orus-sandbox"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "chrono",
- "log",
- "serde",
- "serde_json",
- "tempfile",
- "thiserror 1.0.69",
- "toml",
-]
-
-[[package]]
-name = "orus-shell"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "chrono",
- "jag-draw",
- "jag-surface",
- "orus-core",
- "orus-filemanager",
- "orus-sandbox",
- "orus-terminal",
- "orus-textedit",
- "orus-viewer",
- "log",
- "pollster 0.3.0",
- "rfd",
- "serde",
- "serde_json",
- "tempfile",
- "wgpu",
- "winit",
-]
-
-[[package]]
-name = "orus-terminal"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "jag-draw",
- "jag-surface",
- "orus-core",
- "libc",
- "pollster 0.3.0",
- "vte",
- "wgpu",
- "winit",
-]
-
-[[package]]
-name = "orus-textedit"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "jag-draw",
- "jag-surface",
- "jag-text",
- "orus-core",
- "pollster 0.3.0",
- "pulldown-cmark",
- "rfd",
- "syntect",
- "wgpu",
- "winit",
-]
-
-[[package]]
-name = "orus-viewer"
-version = "0.1.0"
-dependencies = [
- "hayro",
- "image",
- "jag-draw",
- "jag-surface",
- "log",
- "pdfium-render",
- "tempfile",
-]
-
-[[package]]
-name = "orus-windows"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "env_logger",
- "orus-shell",
- "winit",
-]
-
-[[package]]
 name = "kurbo"
 version = "0.11.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3048,6 +2835,219 @@ checksum = "9aa2b01e1d916879f73a53d01d1d6cee68adbb31d6d9177a8cfce093cced1d50"
 dependencies = [
  "futures-core",
  "pin-project-lite",
+]
+
+[[package]]
+name = "orus"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "base64",
+ "ed25519-dalek",
+ "orus-core",
+ "rand_core 0.6.4",
+ "serde",
+ "serde_json",
+ "sha2",
+ "tempfile",
+ "tiny_http",
+ "toml",
+ "ureq",
+ "url",
+ "zip",
+]
+
+[[package]]
+name = "orus-appearance"
+version = "0.1.0"
+dependencies = [
+ "orus-core",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "orus-core"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "log",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 1.0.69",
+]
+
+[[package]]
+name = "orus-filemanager"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "jag-draw",
+ "jag-surface",
+ "libc",
+ "log",
+ "orus-core",
+ "tempfile",
+]
+
+[[package]]
+name = "orus-greeter"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "env_logger",
+ "jag-draw",
+ "jag-surface",
+ "log",
+ "orus-core",
+ "pollster 0.3.0",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 1.0.69",
+ "wgpu",
+ "winit",
+]
+
+[[package]]
+name = "orus-linux"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "env_logger",
+ "orus-panel",
+ "orus-shell",
+ "winit",
+]
+
+[[package]]
+name = "orus-macos"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "env_logger",
+ "objc2 0.5.2",
+ "objc2-app-kit 0.2.2",
+ "objc2-foundation 0.2.2",
+ "orus-sandbox",
+ "orus-shell",
+ "raw-window-handle",
+ "winit",
+]
+
+[[package]]
+name = "orus-panel"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "jag-draw",
+ "jag-surface",
+ "log",
+ "orus-core",
+ "orus-shell",
+ "pollster 0.3.0",
+ "raw-window-handle",
+ "smithay-client-toolkit",
+ "wayland-backend",
+ "wayland-client",
+ "wayland-protocols",
+ "wayland-protocols-wlr",
+ "wgpu",
+]
+
+[[package]]
+name = "orus-sandbox"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "log",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 1.0.69",
+ "toml",
+]
+
+[[package]]
+name = "orus-shell"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "jag-draw",
+ "jag-surface",
+ "log",
+ "orus-core",
+ "orus-filemanager",
+ "orus-sandbox",
+ "orus-terminal",
+ "orus-textedit",
+ "orus-viewer",
+ "pollster 0.3.0",
+ "rfd",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "wgpu",
+ "winit",
+]
+
+[[package]]
+name = "orus-terminal"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "jag-draw",
+ "jag-surface",
+ "libc",
+ "orus-core",
+ "pollster 0.3.0",
+ "vte",
+ "wgpu",
+ "winit",
+]
+
+[[package]]
+name = "orus-textedit"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "jag-draw",
+ "jag-surface",
+ "jag-text",
+ "orus-core",
+ "pollster 0.3.0",
+ "pulldown-cmark",
+ "rfd",
+ "syntect",
+ "wgpu",
+ "winit",
+]
+
+[[package]]
+name = "orus-viewer"
+version = "0.1.0"
+dependencies = [
+ "hayro",
+ "image",
+ "jag-draw",
+ "jag-surface",
+ "log",
+ "pdfium-render",
+ "tempfile",
+]
+
+[[package]]
+name = "orus-windows"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "env_logger",
+ "orus-shell",
+ "winit",
 ]
 
 [[package]]

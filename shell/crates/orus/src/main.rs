@@ -268,7 +268,12 @@ fn catalog_command(mut args: Vec<String>) -> Result<()> {
                 bail!("catalog keygen takes a name for the key files");
             };
             let (private, public) = sign::generate();
-            std::fs::write(format!("{name}.key"), private)?;
+            // Owner-only, and refuse to overwrite an existing key.
+            let mut opts = std::fs::OpenOptions::new();
+            opts.write(true).create_new(true);
+            #[cfg(unix)]
+            std::os::unix::fs::OpenOptionsExt::mode(&mut opts, 0o600);
+            opts.open(format!("{name}.key"))?.write_all(private.as_ref())?;
             std::fs::write(format!("{name}.pub"), public)?;
             println!("wrote {name}.key (keep it secret) and {name}.pub");
         }

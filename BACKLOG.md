@@ -47,7 +47,7 @@ Ordering: after Phase 1.
 - [ ] Decide the auto-login case: with no password at login the keyring cannot unlock; options are an empty-password keyring or a TPM-backed detir vault.
 - [x] Add `debian/copyright` and `LICENSE` with per-package lists of the linked Rust crates.
       Evidence: `debian/copyright`, `licenses/`, `scripts/license-notices.sh`; lintian reports no errors.
-- [x] Relicense the runtime under BSL 1.1 (`licenses/LICENSE-waid-runtime-BSL-1.1.txt`): production use allowed, Apache-2.0 four years after each release; replaces the EULA and `scripts/check-eula.sh`.
+- [x] Relicense the runtime under BSL 1.1 (`licenses/LICENSE-waid-runtime-BSL-1.1.txt`): production use allowed, Apache-2.0 four years after each release; replaces the EULA.
 - [ ] Have counsel confirm the BSL parameters (Additional Use Grant, Change Date, Change License).
 - [ ] Write the developer and distributor agreement for uses the Additional Use Grant does not cover.
 - [ ] Ship the license texts for the linked crates, not only the list (`cargo about`).
